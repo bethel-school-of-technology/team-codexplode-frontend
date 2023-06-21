@@ -6,7 +6,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
 	return (
 		<div className='container'>
 			<h1>Hello.... Hello...</h1>
-			{/* 
+
 			<strong>Ready to create an app?</strong>
 			<p>
 				Start with Ionic{' '}
@@ -17,7 +17,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
 				>
 					UI Components
 				</a>
-			</p> */}
+			</p>
 		</div>
 	);
 };
