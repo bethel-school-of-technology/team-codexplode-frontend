@@ -5,11 +5,9 @@ interface ContainerProps {}
 const ExploreContainer: React.FC<ContainerProps> = () => {
 	return (
 		<div className='container'>
-			<h1>Hello.... Hello...</h1>
-
-			<strong>Ready to create an app?</strong>
+			<strong>Let's get this capstone project rolling!!</strong>
 			<p>
-				Start with Ionic{' '}
+				Ionic Elements{' '}
 				<a
 					target='_blank'
 					rel='noopener noreferrer'

@@ -13,7 +13,7 @@ const Home: React.FC = () => {
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
-					<IonTitle>Hi</IonTitle>
+					<IonTitle>we_Licious</IonTitle>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent fullscreen>
@@ -22,7 +22,6 @@ const Home: React.FC = () => {
 						<IonTitle size='large'>Blank</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<h1>Hi</h1>
 				<ExploreContainer />
 			</IonContent>
 		</IonPage>
