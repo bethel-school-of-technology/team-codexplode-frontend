@@ -1,7 +1,7 @@
 {
-  "name": "hello-world",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react-vite"
+	"name": "we_Licious",
+	"integrations": {
+		"capacitor": {}
+	},
+	"type": "react-vite"
 }
