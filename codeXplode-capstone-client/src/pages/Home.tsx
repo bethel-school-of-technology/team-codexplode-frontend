@@ -3,7 +3,8 @@ import {
 	IonHeader,
 	IonPage,
 	IonTitle,
-	IonToolbar
+	IonToolbar,
+	IonSearchbar
 } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
