@@ -6,14 +6,14 @@ import {
 	IonToolbar
 } from '@ionic/react';
 import BlankPage from '../components/BlankPage';
-import './Login.css';
+import './Profile.css';
 
-const Login: React.FC = () => {
+const Profile: React.FC = () => {
 	return (
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
-					<IonTitle>Login/Sign up</IonTitle>
+					<IonTitle>User Profile</IonTitle>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent fullscreen>
@@ -23,4 +23,4 @@ const Login: React.FC = () => {
 	);
 };
 
-export default Login;
+export default Profile;
