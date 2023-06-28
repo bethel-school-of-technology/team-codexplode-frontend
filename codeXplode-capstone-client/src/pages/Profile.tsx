@@ -6,14 +6,14 @@ import {
 	IonToolbar
 } from '@ionic/react';
 import BlankPage from '../components/BlankPage';
-import './Social.css';
+import './Profile.css';
 
-const Social: React.FC = () => {
+const Profile: React.FC = () => {
 	return (
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
-					<IonTitle>Social</IonTitle>
+					<IonTitle>User Profile</IonTitle>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent fullscreen>
@@ -23,4 +23,4 @@ const Social: React.FC = () => {
 	);
 };
 
-export default Social;
+export default Profile;
