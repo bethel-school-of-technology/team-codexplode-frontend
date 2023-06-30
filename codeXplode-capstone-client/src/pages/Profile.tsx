@@ -1,6 +1,8 @@
 import {
+	IonButtons,
 	IonContent,
 	IonHeader,
+	IonMenuButton,
 	IonPage,
 	IonTitle,
 	IonToolbar
@@ -13,10 +15,13 @@ const Profile: React.FC = () => {
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
+					<IonButtons slot='start'>
+						<IonMenuButton></IonMenuButton>
+					</IonButtons>
 					<IonTitle>User Profile</IonTitle>
 				</IonToolbar>
 			</IonHeader>
-			<IonContent fullscreen>
+			<IonContent className='ion-padding'>
 				<BlankPage />
 			</IonContent>
 		</IonPage>
