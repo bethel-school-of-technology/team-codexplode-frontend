@@ -1,6 +1,8 @@
 import {
+	IonButtons,
 	IonContent,
 	IonHeader,
+	IonMenuButton,
 	IonPage,
 	IonTitle,
 	IonToolbar
@@ -13,10 +15,13 @@ const Social: React.FC = () => {
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
+					<IonButtons slot='start'>
+						<IonMenuButton></IonMenuButton>
+					</IonButtons>
 					<IonTitle>Social</IonTitle>
 				</IonToolbar>
 			</IonHeader>
-			<IonContent fullscreen>
+			<IonContent className='ion-padding'>
 				<BlankPage />
 			</IonContent>
 		</IonPage>

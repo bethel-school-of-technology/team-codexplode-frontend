@@ -38,58 +38,17 @@ import Restaurants from './pages/Restaurants';
 import Reviews from './pages/Reviews';
 import Social from './pages/Social';
 import { Icon } from 'ionicons/dist/types/components/icon/icon';
+import Menu from './pages/Menu';
 
 setupIonicReact();
 
 const App: React.FC = () => (
 	<IonApp>
 		<IonReactRouter>
-			<IonTabs>
-				<IonRouterOutlet>
-					<Route exact path='/home'>
-						<Home />
-					</Route>
-					<Route exact path='/login'>
-						<Login />
-					</Route>
-					<Route exact path='/profile'>
-						<Profile />
-					</Route>
-					<Route exact path='/recipes'>
-						<Recipes />
-					</Route>
-					<Route exact path='/restaurants'>
-						<Restaurants />
-					</Route>
-					<Route exact path='/reviews'>
-						<Reviews />
-					</Route>
-					<Route exact path='/social'>
-						<Social />
-					</Route>
-					<Route exact path='/'>
-						<Redirect to='/home' />
-					</Route>
-				</IonRouterOutlet>
-				<IonTabBar slot='bottom'>
-					<IonTabButton tab='home' href='/hme'>
-						<IonIcon icon='home-outline' />
-						<IonLabel>HOME</IonLabel>
-					</IonTabButton>
-					<IonTabButton tab='recipes' href='/recipes'>
-						<IonIcon icon='receipt-outline' />
-						<IonLabel>RECIPES</IonLabel>
-					</IonTabButton>
-					<IonTabButton tab='restaurants' href='/restaurants'>
-						<IonIcon icon='fast-food-outline' />
-						<IonLabel>RESTAURANTS</IonLabel>
-					</IonTabButton>
-					<IonTabButton tab='reviews' href='/reviews'>
-						<IonIcon icon='star-half-outline' />
-						<IonLabel>REVIEWS</IonLabel>
-					</IonTabButton>
-				</IonTabBar>
-			</IonTabs>
+			<IonRouterOutlet>
+				<Route exact path='/' component={Login} />
+				<Route path='/app' component={Menu} />
+			</IonRouterOutlet>
 		</IonReactRouter>
 	</IonApp>
 );

@@ -4,26 +4,31 @@ import {
 	IonPage,
 	IonTitle,
 	IonToolbar,
-	IonSearchbar
+	IonSearchbar,
+	IonButtons,
+	IonMenuButton
 } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
+import BlankPage from '../components/BlankPage';
 
 const Home: React.FC = () => {
 	return (
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
+					<IonButtons slot='start'>
+						<IonMenuButton></IonMenuButton>
+					</IonButtons>
 					<IonTitle>we_Licious</IonTitle>
 				</IonToolbar>
 			</IonHeader>
-			<IonContent fullscreen>
+			<IonContent className='ion-padding'>
 				<IonHeader collapse='condense'>
 					<IonToolbar>
 						<IonTitle size='large'>Blank</IonTitle>
 					</IonToolbar>
 				</IonHeader>
-				<ExploreContainer />
+				<BlankPage />
 			</IonContent>
 		</IonPage>
 	);
