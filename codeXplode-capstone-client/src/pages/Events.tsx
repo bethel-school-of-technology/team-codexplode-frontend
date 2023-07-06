@@ -8,6 +8,7 @@ import {
 	IonToolbar
 } from '@ionic/react';
 import BlankPage from '../components/BlankPage';
+import EventList from '../components/EventList';
 import './Events.css';
 
 const Events: React.FC = () => {
@@ -23,6 +24,7 @@ const Events: React.FC = () => {
 			</IonHeader>
 			<IonContent className='ion-padding'>
 				<BlankPage />
+				<EventList />
 			</IonContent>
 		</IonPage>
 	);

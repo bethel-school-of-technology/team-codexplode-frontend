@@ -4,6 +4,7 @@ import EventContext from './EventContext';
 import React from 'react';
 
 interface Event {
+	id: number;
 	title: string;
 	when: string;
 	where: string;
@@ -16,7 +17,7 @@ interface EventProviderProps {
 export const EventProvider: React.FC<EventProviderProps> = (
 	props: EventProviderProps
 ) => {
-	const [Event, setEvent] = useState<Event[]>([]);
+	const [event, setEvent] = useState<Event[]>([]);
 	const baseUrl = 'http://localhost:3000/api/Events';
 
 	useEffect(() => {
@@ -30,8 +31,8 @@ export const EventProvider: React.FC<EventProviderProps> = (
 		return axios.get(baseUrl).then((response) => setEvent(response.data));
 	}
 
-	function addEvent(Event: any) {
-		return axios.post(baseUrl, Event).then((response) => {
+	function addEvent(event: any) {
+		return axios.post(baseUrl, event).then((response) => {
 			getAllEvents();
 			return new Promise((resolve) => resolve(response.data));
 		});
@@ -44,7 +45,7 @@ export const EventProvider: React.FC<EventProviderProps> = (
 		});
 	}
 
-	function deleteEvent(id: any) {
+	function deleteEvent(id: number) {
 		return axios.put(baseUrl + id).then((response) => {
 			getAllEvents();
 			return new Promise((resolve) => resolve(response.data));
@@ -54,7 +55,7 @@ export const EventProvider: React.FC<EventProviderProps> = (
 	return (
 		<EventContext.Provider
 			value={{
-				Event,
+				event,
 				getAllEvents,
 				addEvent,
 				editEvent,
