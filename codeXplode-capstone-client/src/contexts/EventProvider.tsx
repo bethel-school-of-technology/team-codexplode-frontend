@@ -6,6 +6,12 @@ import React from 'react';
 interface Event {
 	id: number;
 	title: string;
+	description: string;
+	location?: string;
+	host: string;
+	cuisine: string;
+	meal: string;
+	participants: string;
 	when: string;
 	where: string;
 }
@@ -17,7 +23,7 @@ interface EventProviderProps {
 export const EventProvider: React.FC<EventProviderProps> = (
 	props: EventProviderProps
 ) => {
-	const [event, setEvent] = useState<Event[]>([]);
+	const [events, setEvents] = useState<Event[]>([]);
 	const baseUrl = 'http://localhost:3000/api/Events';
 
 	useEffect(() => {
@@ -28,7 +34,7 @@ export const EventProvider: React.FC<EventProviderProps> = (
 	}, []);
 
 	function getAllEvents() {
-		return axios.get(baseUrl).then((response) => setEvent(response.data));
+		return axios.get(baseUrl).then((response) => setEvents(response.data));
 	}
 
 	function addEvent(event: any) {
@@ -55,7 +61,7 @@ export const EventProvider: React.FC<EventProviderProps> = (
 	return (
 		<EventContext.Provider
 			value={{
-				event,
+				events,
 				getAllEvents,
 				addEvent,
 				editEvent,

@@ -11,6 +11,7 @@ import {
 } from '@ionic/react';
 import { useContext } from 'react';
 import EventContext from '../contexts/EventContext';
+//import { deleteEvent } from '../contexts/EventProvider'
 import { trash } from 'ionicons/icons';
 import './EventList.css';
 
@@ -47,11 +48,11 @@ const EventList: React.FC<ContainerProps> = () => {
 				<EventContext.Consumer>
 					{({ event }) => {
 						return (
-							<IonList key={Event.id}>
+							<IonList>
 								<IonListHeader color={'warning'}>
 									<IonLabel>Incomplete</IonLabel>
 								</IonListHeader>
-								{event.map((event: any) => {
+								{events.map((event: any) => {
 									if (event.eventComplete === false) {
 										return (
 											<div>
@@ -88,15 +89,15 @@ const EventList: React.FC<ContainerProps> = () => {
 			</div>
 			<div>
 				<EventContext.Consumer>
-					{({ event }) => {
+					{({ events }) => {
 						return (
-							<IonList key={event.id}>
+							<IonList>
 								<IonListHeader color={'success'}>
 									<IonLabel color={'light'} className={'ion-margin'}>
 										Complete
 									</IonLabel>
 								</IonListHeader>
-								{event.map((event: any) => {
+								{events.map((event: any) => {
 									if (event.eventComplete === true) {
 										return (
 											<IonItemSliding>
