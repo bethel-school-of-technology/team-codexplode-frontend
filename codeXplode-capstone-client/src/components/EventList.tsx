@@ -10,10 +10,9 @@ import {
 	IonIcon
 } from '@ionic/react';
 import { useContext } from 'react';
-import EventContext from '../contexts/EventContext';
-//import { deleteEvent } from '../contexts/EventProvider'
 import { trash } from 'ionicons/icons';
 import './EventList.css';
+import {EventContext} from "../contexts/EventContext";
 
 interface ContainerProps {}
 
@@ -21,14 +20,14 @@ const EventList: React.FC<ContainerProps> = () => {
 	let { deleteEvent, editEvent } = useContext(EventContext);
 
 	const eventComplete = (event: any) => {
-		editEvent(event.id, { title: event.title, completed: true })
+		editEvent({...event, completed: true})
 			.then(() => {})
 			.catch((error: any) => {
 				console.log(error);
 			});
 	};
 	const eventIncomplete = (event: any) => {
-		editEvent(event.id, { title: event.title, completed: false })
+		editEvent({...event, completed: false})
 			.then(() => {})
 			.catch((error: any) => {
 				console.log(error);
@@ -46,7 +45,7 @@ const EventList: React.FC<ContainerProps> = () => {
 		<div>
 			<div>
 				<EventContext.Consumer>
-					{({ event }) => {
+					{({ events }) => {
 						return (
 							<IonList>
 								<IonListHeader color={'warning'}>
