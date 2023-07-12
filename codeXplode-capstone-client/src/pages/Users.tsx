@@ -8,7 +8,6 @@ import {
 	IonToolbar
 } from '@ionic/react';
 import BlankPage from '../components/BlankPage';
-// import UserList from ',,/components/UserList';
 
 const Users: React.FC = () => {
 	return (
@@ -23,7 +22,6 @@ const Users: React.FC = () => {
 			</IonHeader>
 			<IonContent className='ion-padding'>
 				<BlankPage />
-				{/* <UserList /> */}
 			</IonContent>
 		</IonPage>
 	);
