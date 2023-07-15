@@ -1,23 +1,16 @@
 import {
   IonButton,
   IonButtons,
-  IonCard,
-  IonCol,
   IonContent,
-  IonHeader,
   IonIcon,
   IonInput,
   IonItem,
   IonList,
-  IonMenuButton,
-  IonPage,
-  IonRow,
   IonText,
   IonTitle,
   IonToolbar,
   useIonRouter,
 } from "@ionic/react";
-import BlankPage from "../components/BlankPage";
 import "./Login.css";
 
 const Login: React.FC = () => {
