@@ -125,7 +125,9 @@ const EventForm: React.FC = () => {
             />
           </IonItem>
           <IonItem>
-            <IonLabel position='floating'>When</IonLabel>
+            <IonLabel position='floating'>
+              When <IonText color='danger'>*</IonText>
+            </IonLabel>
             <IonInput
               name='when'
               onIonInput={handleChange}
