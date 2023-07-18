@@ -7,7 +7,12 @@ import {
 	IonCheckbox,
 	IonItemOptions,
 	IonItemOption,
-	IonIcon
+	IonIcon,
+	IonCard,
+	IonCardContent,
+	IonCardHeader,
+	IonCardTitle,
+	IonCardSubtitle
 } from '@ionic/react';
 import { useContext } from 'react';
 import { trash } from 'ionicons/icons';
@@ -46,16 +51,29 @@ const EventList: React.FC<ContainerProps> = () => {
 			<div>
 				<EventContext.Consumer>
 					{({ events }) => {
+						console.log(events); 
 						return (
 							<IonList>
-								<IonListHeader color={'warning'}>
+								{/* <IonListHeader color={'warning'}>
 									<IonLabel>Incomplete</IonLabel>
-								</IonListHeader>
+								</IonListHeader> */}
 								{events.map((event: any) => {
-									if (event.eventComplete === false) {
+									// if (event.eventComplete === false) {
 										return (
 											<div>
-												<IonItemSliding>
+												<IonCard>
+      <img alt="Silhouette of mountains" src="https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Layered-Tortilla-Pie_exps5947_BS2282136A04_15_2b_RMS.jpg" />
+      <IonCardHeader>
+        <IonCardTitle>{event.title}</IonCardTitle>
+        <IonCardSubtitle>{event.cuisine}</IonCardSubtitle>
+      </IonCardHeader>
+
+      <IonCardContent>
+		<p>{event.description}</p>
+		<p>Meal: {event.meal}</p>
+	  </IonCardContent>
+    </IonCard>
+												{/* <IonItemSliding>
 													<IonList>
 														<IonItem>
 															<IonLabel>{event.title}</IonLabel>
@@ -76,17 +94,17 @@ const EventList: React.FC<ContainerProps> = () => {
 															</IonItemOption>
 														</IonItemOptions>
 													</IonList>
-												</IonItemSliding>
+												</IonItemSliding> */}
 											</div>
 										);
-									}
+									// }
 								})}
 							</IonList>
 						);
 					}}
 				</EventContext.Consumer>
 			</div>
-			<div>
+			{/* <div>
 				<EventContext.Consumer>
 					{({ events }) => {
 						return (
@@ -97,7 +115,7 @@ const EventList: React.FC<ContainerProps> = () => {
 									</IonLabel>
 								</IonListHeader>
 								{events.map((event: any) => {
-									if (event.eventComplete === true) {
+									// if (event.eventComplete === true) {
 										return (
 											<IonItemSliding>
 												<IonItem>
@@ -117,13 +135,13 @@ const EventList: React.FC<ContainerProps> = () => {
 												</IonItemOptions>
 											</IonItemSliding>
 										);
-									}
+									//}
 								})}
 							</IonList>
 						);
 					}}
 				</EventContext.Consumer>
-			</div>
+			</div> */}
 		</div>
 	);
 };
