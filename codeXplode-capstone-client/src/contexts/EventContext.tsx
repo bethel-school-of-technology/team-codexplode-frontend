@@ -4,16 +4,15 @@ import React, {createContext, useEffect, useState} from 'react';
 import axios from 'axios';
 
 interface Event {
-    id: number;
+    id?: number;
     title: string;
     description: string;
     location?: string;
     host: string;
     cuisine: string;
     meal: string;
-    participants: string;
+    participants?: string;
     when: string;
-    where: string;
 }
 
 export const EventContext = createContext<EventContextProps>({
@@ -40,7 +39,7 @@ interface EventProviderProps {
 
 export const EventProvider = ({ children }: EventProviderProps) => {
     const [events, setEvents] = useState<Event[]>([]);
-    const baseUrl = 'http://localhost:3000/api/Event';
+    const baseUrl = 'http://localhost:3000/api/event';
 
     useEffect(() => {
         console.log('useEffect');
@@ -55,7 +54,9 @@ export const EventProvider = ({ children }: EventProviderProps) => {
     }
 
     function addEvent(event: any): Promise<Event> {
-        return axios.post(baseUrl, event).then((response) => {
+        const token = { Authorization: `Bearer ${localStorage.getItem('token')}` };
+
+        return axios.post(baseUrl, event, { headers: token }).then((response) => {
             getAllEvents();
             return new Promise((resolve) => resolve(response.data));
         });
