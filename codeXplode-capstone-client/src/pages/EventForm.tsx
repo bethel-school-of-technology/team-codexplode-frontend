@@ -12,9 +12,12 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import {EventContext} from "../contexts/EventContext";
 
 const EventForm: React.FC = () => {
+  let { addEvent } = useContext(EventContext);
+
   const [event, setEvent] = useState({
     host: '',
     title: '',
@@ -24,6 +27,18 @@ const EventForm: React.FC = () => {
     location: '',
     participants: '',  
   });
+
+  const slideToDelete = (event: any) => {
+		addEvent(event)
+			.then(() => {
+        // TODO redirect to the list or detail
+      })
+			.catch((error: any) => {
+				console.log(error);
+			});
+	};
+
+  // TODO onChangeItem() 
 
   return (
     <IonPage>
