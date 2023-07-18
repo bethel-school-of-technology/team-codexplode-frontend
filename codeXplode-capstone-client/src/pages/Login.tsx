@@ -12,13 +12,23 @@ import {
   useIonRouter,
 } from "@ionic/react";
 import "./Login.css";
+import { useState } from "react";
 
 const Login: React.FC = () => {
   const navigation = useIonRouter();
 
-  const userLogin = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('')
+
+  const handleLogin = () => {
+    console.log('Email:' , email);
+    console.log('Password:' , password);
     navigation.push("/app", "forward", "replace");
-  };
+  }
+
+  // const userLogin = () => {
+  //   navigation.push("/app", "forward", "replace");
+  // };
 
   return (
     <IonContent>
@@ -32,21 +42,21 @@ const Login: React.FC = () => {
       <div className="login">
         <IonList>
           <IonItem>
-            <IonInput labelPlacement="floating" type="email" value="">
+            <IonInput labelPlacement="floating" type="email" value={email} onIonChange={(e) => setEmail(e.detail.value!)}>
               <div slot="label">
                 Email <IonText color="danger">(Required)</IonText>
               </div>
             </IonInput>
           </IonItem>
           <IonItem>
-            <IonInput labelPlacement="floating" type="password" value="">
+            <IonInput labelPlacement="floating" type="password" value={password} onIonChange={(e) => setPassword(e.detail.value!)}>
               <div slot="label">
                 Password <IonText color="danger">(Required)</IonText>
               </div>
             </IonInput>
           </IonItem>
         </IonList>
-        <IonButton className="button" onClick={() => userLogin()}>
+        <IonButton className="button" onClick={handleLogin}>
           login
         </IonButton>
         <p>Don't have an account?</p>
