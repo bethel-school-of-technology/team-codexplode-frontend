@@ -1,4 +1,5 @@
 import {
+  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
@@ -11,12 +12,14 @@ import {
   IonText,
   IonTitle,
   IonToolbar,
+  useIonRouter,
 } from '@ionic/react';
 import { useState, useContext } from 'react';
-import {EventContext} from "../contexts/EventContext";
+import { EventContext } from '../contexts/EventContext';
 
 const EventForm: React.FC = () => {
   let { addEvent } = useContext(EventContext);
+  const navigation = useIonRouter();
 
   const [event, setEvent] = useState({
     host: '',
@@ -25,20 +28,26 @@ const EventForm: React.FC = () => {
     cuisine: '',
     meal: '',
     location: '',
-    participants: '',  
+    mediaCardUrl: '',
+    when: '',
   });
 
-  const slideToDelete = (event: any) => {
-		addEvent(event)
-			.then(() => {
-        // TODO redirect to the list or detail
-      })
-			.catch((error: any) => {
-				console.log(error);
-			});
-	};
+  let { title, description, cuisine, meal, location, mediaCardUrl, when } = event;
 
-  // TODO onChangeItem() 
+  const submit = () => {
+    console.log(event);
+    addEvent(event)
+      .then(() => {
+        navigation.push('/app/events', 'forward', 'replace');
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
+  };
+
+  const handleChange = (ev: any) => {
+    setEvent({ ...event, [ev.target.name]: ev.target.value });
+  };
 
   return (
     <IonPage>
@@ -56,34 +65,77 @@ const EventForm: React.FC = () => {
             <IonLabel position='floating'>
               Event Title <IonText color='danger'>*</IonText>
             </IonLabel>
-            <IonInput placeholder="Tim's Burgers" />
+            <IonInput
+              name='title'
+              onIonInput={handleChange}
+              value={title}
+              placeholder="Tim's Burgers"
+            />
           </IonItem>
           <IonItem>
             <IonLabel position='floating'>
               Description <IonText color='danger'>*</IonText>
             </IonLabel>
-            <IonInput placeholder='This is a description...' />
+            <IonInput
+              name='description'
+              onIonInput={handleChange}
+              value={description}
+              placeholder='This is a description...'
+            />
           </IonItem>
           <IonItem>
             <IonLabel position='floating'>
               Cuisine <IonText color='danger'>*</IonText>
             </IonLabel>
-            <IonInput placeholder='Italian' />
+            <IonInput
+              name='cuisine'
+              onIonInput={handleChange}
+              value={cuisine}
+              placeholder='Italian'
+            />
           </IonItem>
           <IonItem>
             <IonLabel position='floating'>
               Meal <IonText color='danger'>*</IonText>
             </IonLabel>
-            <IonInput placeholder='Fettucine Alfredo' />
+            <IonInput
+              name='meal'
+              onIonInput={handleChange}
+              value={meal}
+              placeholder='Fettucine Alfredo'
+            />
           </IonItem>
           <IonItem>
             <IonLabel position='floating'>Location</IonLabel>
-            <IonInput placeholder='123 Boardfish Rd, New York, NY' />
+            <IonInput
+              name='location'
+              onIonInput={handleChange}
+              value={location}
+              placeholder='123 Boardfish Rd, New York, NY'
+            />
           </IonItem>
           <IonItem>
             <IonLabel position='floating'>Image URL</IonLabel>
-            <IonInput placeholder='unsplash.com/randomimage' />
+            <IonInput
+              type='url'
+              name='mediaCardUrl'
+              onIonInput={handleChange}
+              value={mediaCardUrl}
+              placeholder='unsplash.com/randomimage'
+            />
           </IonItem>
+          <IonItem>
+            <IonLabel position='floating'>When</IonLabel>
+            <IonInput
+              name='when'
+              onIonInput={handleChange}
+              value={when}
+              placeholder='2022-01-01'></IonInput>
+          </IonItem>
+          <hr />
+          <IonButton expand='block' onClick={() => submit()}>
+            Submit
+          </IonButton>
         </IonList>
       </IonContent>
     </IonPage>
