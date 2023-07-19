@@ -14,7 +14,8 @@ export const UserContext = createContext<UserContextProps>({
 	getAllUsers: () => Promise.resolve(),
 	addUser: (user: User) => Promise.resolve(user),
 	editUser: (user: User) => Promise.resolve(user),
-	deleteUser: (id: number) => Promise.resolve(id)
+	deleteUser: (id: number) => Promise.resolve(id),
+	loginUser: (user: User) => Promise.resolve(user),
 });
 
 export interface UserContextProps {
@@ -23,6 +24,7 @@ export interface UserContextProps {
 	addUser: (user: User) => Promise<User>;
 	editUser: (user: User) => Promise<User>;
 	deleteUser: (id: number) => Promise<number>;
+	loginUser: (user: User) => Promise<User>;
 }
 
 interface UserProviderProps {
@@ -40,6 +42,13 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 		}
 		getUsers();
 	}, []);
+	
+	function loginUser(user: User): Promise<User> {
+		return axios.post(baseUrl, user).then((response) => {
+			getAllUsers();
+			return new Promise((resolve) => resolve(response.data));
+		});
+	}
 
 	function getAllUsers() {
 		return axios.get(baseUrl).then((response) => setUsers(response.data));
@@ -73,7 +82,8 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 				getAllUsers,
 				addUser,
 				editUser,
-				deleteUser
+				deleteUser,
+				loginUser
 			}}
 		>
 			{children}
