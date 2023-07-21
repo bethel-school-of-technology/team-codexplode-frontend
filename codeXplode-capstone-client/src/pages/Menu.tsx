@@ -25,7 +25,7 @@ import {
 	peopleCircleOutline,
 	starHalfOutline
 } from 'ionicons/icons';
-import { Redirect, Route } from 'react-router';
+import { Navigate, Route } from 'react-router-dom';
 import About from './About';
 import Events from './Events';
 import Recipes from './Recipes';
@@ -72,15 +72,15 @@ const Menu: React.FC = () => {
 				</IonMenu>
 
 				<IonRouterOutlet id='main'>
-					<Route exact path='/app/about' component={About} />
-					<Route exact path='/app/events' component={Events} />
-					<Route exact path='/app/recipes' component={Recipes} />
-					<Route exact path='/app/restaurants' component={Restaurants} />
-					<Route exact path='/app/reviews' component={Reviews} />
-					<Route exact path='/app/profile' component={Profile} />
-					<Route exact path='/app/social' component={Social} />
-					<Route exact path='/app'>
-						<Redirect to='/app/events' />
+					<Route path='/app/about' element={<About />} />
+					<Route path='/app/events' element={<Events />} />
+					<Route path='/app/recipes' element={<Recipes />} />
+					<Route path='/app/restaurants' element={<Restaurants />} />
+					<Route path='/app/reviews' element={<Reviews />} />
+					<Route path='/app/profile' element={<Profile />} />
+					<Route path='/app/social' element={<Social />} />
+					<Route path='/app'>
+						<Navigate to='/app/events' />
 					</Route>
 				</IonRouterOutlet>
 			</IonSplitPane>
