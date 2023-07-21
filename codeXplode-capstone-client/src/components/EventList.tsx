@@ -1,97 +1,100 @@
 import {
-	IonList,
-	IonListHeader,
-	IonLabel,
-	IonItemSliding,
-	IonItem,
-	IonCheckbox,
-	IonItemOptions,
-	IonItemOption,
-	IonIcon,
-	IonCard,
-	IonCardContent,
-	IonCardHeader,
-	IonCardTitle,
-	IonCardSubtitle
+  IonList,
+  IonListHeader,
+  IonLabel,
+  IonItemSliding,
+  IonItem,
+  IonCheckbox,
+  IonItemOptions,
+  IonItemOption,
+  IonIcon,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle,
 } from '@ionic/react';
 import { useContext, useEffect, useState } from 'react';
 import { trash } from 'ionicons/icons';
 import './EventList.css';
-import {EventContext} from "../contexts/EventContext";
+import { EventContext } from '../contexts/EventContext';
 
 interface ContainerProps {}
 
 const EventList: React.FC<ContainerProps> = () => {
-	let { deleteEvent, editEvent } = useContext(EventContext);
-	const [localUser, setLocalUser] = useState();
+  let { deleteEvent, editEvent } = useContext(EventContext);
+  const [localUser, setLocalUser] = useState();
 
-	const decodeJWT = (token: any) => {
-		try {
-		  return JSON.parse(atob(token.split('.')[1]));
-		} catch (e) {
-		  return null;
-		}
-	  };
-	
-	  useEffect(() => {
-		async function fetch() {
-		  const token = localStorage.getItem('token');
-		  let user = await decodeJWT(token);
-		  setLocalUser(user.userId);
-		}
-		fetch();
-	  }, []);
+  const decodeJWT = (token: any) => {
+    try {
+      return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+      return null;
+    }
+  };
 
-	const eventComplete = (event: any) => {
-		editEvent({...event, completed: true})
-			.then(() => {})
-			.catch((error: any) => {
-				console.log(error);
-			});
-	};
-	const eventIncomplete = (event: any) => {
-		editEvent({...event, completed: false})
-			.then(() => {})
-			.catch((error: any) => {
-				console.log(error);
-			});
-	};
-	const slideToDelete = (id: number) => {
-		deleteEvent(id)
-			.then(() => {})
-			.catch((error: any) => {
-				console.log(error);
-			});
-	};
+  useEffect(() => {
+    async function fetch() {
+      const token = localStorage.getItem('token');
+      let user = await decodeJWT(token);
+      setLocalUser(user.userId);
+    }
+    fetch();
+  }, []);
 
-	return (
-		<div>
-			<div>
-				<EventContext.Consumer>
-					{({ events }) => {
-						console.log(localUser); 
-						return (
-							<IonList>
-								{/* <IonListHeader color={'warning'}>
+  const eventComplete = (event: any) => {
+    editEvent({ ...event, completed: true })
+      .then(() => {})
+      .catch((error: any) => {
+        console.log(error);
+      });
+  };
+  const eventIncomplete = (event: any) => {
+    editEvent({ ...event, completed: false })
+      .then(() => {})
+      .catch((error: any) => {
+        console.log(error);
+      });
+  };
+  const slideToDelete = (id: number) => {
+    deleteEvent(id)
+      .then(() => {})
+      .catch((error: any) => {
+        console.log(error);
+      });
+  };
+
+  return (
+    <div>
+      <div>
+        <EventContext.Consumer>
+          {({ events }) => {
+            console.log(localUser);
+            return (
+              <IonList>
+                {/* <IonListHeader color={'warning'}>
 									<IonLabel>Incomplete</IonLabel>
 								</IonListHeader> */}
-								{events.map((event: any) => {
-									// if (event.eventComplete === false) {
-										return (
-											<div>
-												<IonCard key={event._id}>
-      <img alt="Silhouette of mountains" src="https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Layered-Tortilla-Pie_exps5947_BS2282136A04_15_2b_RMS.jpg" />
-      <IonCardHeader>
-        <IonCardTitle>{event.title}</IonCardTitle>
-        <IonCardSubtitle>{event.cuisine}</IonCardSubtitle>
-      </IonCardHeader>
+                {events.map((event: any) => {
+                  // if (event.eventComplete === false) {
+                  return (
+                    <div>
+                      <IonCard key={event._id}>
+                        <img
+                          alt='Silhouette of mountains'
+                          src='https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Layered-Tortilla-Pie_exps5947_BS2282136A04_15_2b_RMS.jpg'
+                        />
+                        <IonCardHeader>
+                          <IonCardTitle>{event.title}</IonCardTitle>
+                          <IonCardSubtitle>{event.cuisine}</IonCardSubtitle>
+                        </IonCardHeader>
 
-      <IonCardContent>
-		<p>{event.description}</p>
-		<p>Meal: {event.meal}</p>
-	  </IonCardContent>
-    </IonCard>
-												{/* <IonItemSliding>
+                        <IonCardContent>
+                          <p>{event.description}</p>
+                          <p>Meal: {event.meal}</p>
+                        </IonCardContent>
+                      </IonCard>
+                      {/* <IonItemSliding>
 													<IonList>
 														<IonItem>
 															<IonLabel>{event.title}</IonLabel>
@@ -113,16 +116,16 @@ const EventList: React.FC<ContainerProps> = () => {
 														</IonItemOptions>
 													</IonList>
 												</IonItemSliding> */}
-											</div>
-										);
-									// }
-								})}
-							</IonList>
-						);
-					}}
-				</EventContext.Consumer>
-			</div>
-			{/* <div>
+                    </div>
+                  );
+                  // }
+                })}
+              </IonList>
+            );
+          }}
+        </EventContext.Consumer>
+      </div>
+      {/* <div>
 				<EventContext.Consumer>
 					{({ events }) => {
 						return (
@@ -160,8 +163,8 @@ const EventList: React.FC<ContainerProps> = () => {
 					}}
 				</EventContext.Consumer>
 			</div> */}
-		</div>
-	);
+    </div>
+  );
 };
 
 export default EventList;
