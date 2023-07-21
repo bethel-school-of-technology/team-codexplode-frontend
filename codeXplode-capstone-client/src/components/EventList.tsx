@@ -14,7 +14,7 @@ import {
 	IonCardTitle,
 	IonCardSubtitle
 } from '@ionic/react';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { trash } from 'ionicons/icons';
 import './EventList.css';
 import {EventContext} from "../contexts/EventContext";
@@ -23,6 +23,24 @@ interface ContainerProps {}
 
 const EventList: React.FC<ContainerProps> = () => {
 	let { deleteEvent, editEvent } = useContext(EventContext);
+	const [localUser, setLocalUser] = useState();
+
+	const decodeJWT = (token: any) => {
+		try {
+		  return JSON.parse(atob(token.split('.')[1]));
+		} catch (e) {
+		  return null;
+		}
+	  };
+	
+	  useEffect(() => {
+		async function fetch() {
+		  const token = localStorage.getItem('token');
+		  let user = await decodeJWT(token);
+		  setLocalUser(user.userId);
+		}
+		fetch();
+	  }, []);
 
 	const eventComplete = (event: any) => {
 		editEvent({...event, completed: true})
@@ -51,7 +69,7 @@ const EventList: React.FC<ContainerProps> = () => {
 			<div>
 				<EventContext.Consumer>
 					{({ events }) => {
-						console.log(events); 
+						console.log(localUser); 
 						return (
 							<IonList>
 								{/* <IonListHeader color={'warning'}>
@@ -61,7 +79,7 @@ const EventList: React.FC<ContainerProps> = () => {
 									// if (event.eventComplete === false) {
 										return (
 											<div>
-												<IonCard>
+												<IonCard key={event._id}>
       <img alt="Silhouette of mountains" src="https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Layered-Tortilla-Pie_exps5947_BS2282136A04_15_2b_RMS.jpg" />
       <IonCardHeader>
         <IonCardTitle>{event.title}</IonCardTitle>
