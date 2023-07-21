@@ -23,8 +23,6 @@ export const UserContext = createContext<UserContextProps>({
   loginUser: (user: UserLogin) => Promise.resolve(user),
 });
 
-// export const UserContext = createContext<UserContextProps>({} as UserContextProps);
-
 export interface UserContextProps {
   users: User[];
   getAllUsers: () => Promise<void>;
