@@ -1,7 +1,9 @@
 import {
+	IonButton,
 	IonButtons,
 	IonContent,
 	IonHeader,
+	IonIcon,
 	IonMenuButton,
 	IonPage,
 	IonTitle,
@@ -9,6 +11,7 @@ import {
 } from '@ionic/react';
 import BlankPage from '../components/BlankPage';
 import './Recipes.css';
+import { calendarOutline, caretBackCircleOutline } from 'ionicons/icons';
 
 const Recipes: React.FC = () => {
 	return (
@@ -16,13 +19,17 @@ const Recipes: React.FC = () => {
 			<IonHeader>
 				<IonToolbar>
 					<IonButtons slot='start'>
-						<IonMenuButton></IonMenuButton>
+						<IonButton routerLink='/app/events' routerDirection='root'>
+							<IonIcon icon={caretBackCircleOutline}></IonIcon>
+							events
+						</IonButton>
 					</IonButtons>
 					<IonTitle>Recipes</IonTitle>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent className='ion-padding'>
 				<BlankPage />
+				<h1>Build Recipe sharing APi here</h1>
 			</IonContent>
 		</IonPage>
 	);

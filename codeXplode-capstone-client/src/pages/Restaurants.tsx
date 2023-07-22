@@ -1,7 +1,9 @@
 import {
+	IonButton,
 	IonButtons,
 	IonContent,
 	IonHeader,
+	IonIcon,
 	IonMenuButton,
 	IonPage,
 	IonTitle,
@@ -9,6 +11,7 @@ import {
 } from '@ionic/react';
 import BlankPage from '../components/BlankPage';
 import './Restaurants.css';
+import { caretBackCircleOutline, logOutOutline } from 'ionicons/icons';
 
 const Restaurants: React.FC = () => {
 	return (
@@ -16,7 +19,10 @@ const Restaurants: React.FC = () => {
 			<IonHeader>
 				<IonToolbar>
 					<IonButtons slot='start'>
-						<IonMenuButton></IonMenuButton>
+						<IonButton routerLink='/app/events' routerDirection='root'>
+							<IonIcon icon={caretBackCircleOutline}></IonIcon>
+							events
+						</IonButton>
 					</IonButtons>
 					<IonTitle>Restaurants</IonTitle>
 				</IonToolbar>
