@@ -19,6 +19,8 @@ import { useContext, useEffect, useState } from 'react';
 import { trash } from 'ionicons/icons';
 import './EventList.css';
 import { EventContext } from '../contexts/EventContext';
+import EditButton from './EditButton';
+import DeleteButton from './DeleteButton';
 
 interface ContainerProps {}
 
@@ -70,8 +72,8 @@ const EventList: React.FC<ContainerProps> = () => {
     if (localUser === event.host?._id) {
       return (
         <div>
-          <IonButton color='warning' expand='block'>Edit</IonButton>
-          <IonButton color='danger' expand='block'>Delete</IonButton>
+          <EditButton />
+          <DeleteButton />
         </div>
       );
     } else {
