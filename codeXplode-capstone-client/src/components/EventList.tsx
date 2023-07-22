@@ -54,11 +54,7 @@ const EventList: React.FC<ContainerProps> = () => {
 						console.log(events);
 						return (
 							<IonList>
-								{/* <IonListHeader color={'warning'}>
-									<IonLabel>Incomplete</IonLabel>
-								</IonListHeader> */}
 								{events.map((event: any) => {
-									// if (event.eventComplete === false) {
 									return (
 										<div>
 											<IonCard>
@@ -76,28 +72,6 @@ const EventList: React.FC<ContainerProps> = () => {
 													<p>Meal: {event.meal}</p>
 												</IonCardContent>
 											</IonCard>
-											{/* <IonItemSliding>
-													<IonList>
-														<IonItem>
-															<IonLabel>{event.title}</IonLabel>
-															<IonCheckbox
-																onIonChange={() => eventIncomplete(event)}
-																slot={'end'}
-															></IonCheckbox>
-														</IonItem>
-														<IonItemOptions side={'end'}>
-															<IonItemOption
-																onClick={() => slideToDelete(event.id)}
-																color={'danger'}
-															>
-																<IonIcon
-																	slot={'icon-only'}
-																	icon={trash}
-																></IonIcon>
-															</IonItemOption>
-														</IonItemOptions>
-													</IonList>
-												</IonItemSliding> */}
 										</div>
 									);
 									// }
@@ -107,44 +81,6 @@ const EventList: React.FC<ContainerProps> = () => {
 					}}
 				</EventContext.Consumer>
 			</div>
-			{/* <div>
-				<EventContext.Consumer>
-					{({ events }) => {
-						return (
-							<IonList>
-								<IonListHeader color={'success'}>
-									<IonLabel color={'light'} className={'ion-margin'}>
-										Complete
-									</IonLabel>
-								</IonListHeader>
-								{events.map((event: any) => {
-									// if (event.eventComplete === true) {
-										return (
-											<IonItemSliding>
-												<IonItem>
-													<IonLabel>{event.title}</IonLabel>
-													<IonCheckbox
-														onIonChange={() => eventComplete(Event)}
-														slot={'end'}
-													></IonCheckbox>
-												</IonItem>
-												<IonItemOptions side={'end'}>
-													<IonItemOption
-														onClick={() => slideToDelete(event.id)}
-														color={'danger'}
-													>
-														<IonIcon slot={'icon-only'} icon={trash}></IonIcon>
-													</IonItemOption>
-												</IonItemOptions>
-											</IonItemSliding>
-										);
-									//}
-								})}
-							</IonList>
-						);
-					}}
-				</EventContext.Consumer>
-			</div> */}
 		</div>
 	);
 };
