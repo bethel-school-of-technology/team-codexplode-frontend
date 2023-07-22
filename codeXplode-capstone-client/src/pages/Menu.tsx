@@ -1,18 +1,4 @@
-import {
-	IonButton,
-	IonContent,
-	IonHeader,
-	IonIcon,
-	IonItem,
-	IonMenu,
-	IonMenuToggle,
-	IonPage,
-	IonRedirect,
-	IonRouterOutlet,
-	IonSplitPane,
-	IonTitle,
-	IonToolbar
-} from '@ionic/react';
+import * as react from 'react';
 import BlankPage from '../components/BlankPage';
 import './Login.css';
 import {
@@ -33,6 +19,20 @@ import Restaurants from './Restaurants';
 import Reviews from './Reviews';
 import Profile from './Profile';
 import Social from './Social';
+import {
+	IonButton,
+	IonContent,
+	IonHeader,
+	IonIcon,
+	IonItem,
+	IonMenu,
+	IonMenuToggle,
+	IonPage,
+	IonRouterOutlet,
+	IonSplitPane,
+	IonTitle,
+	IonToolbar
+} from '@ionic/react';
 
 const Menu: React.FC = () => {
 	const paths = [
@@ -72,14 +72,14 @@ const Menu: React.FC = () => {
 				</IonMenu>
 
 				<IonRouterOutlet id='main'>
-					<Route exact path='/app/about' component={About} />
-					<Route exact path='/app/events' component={Events} />
-					<Route exact path='/app/recipes' component={Recipes} />
-					<Route exact path='/app/restaurants' component={Restaurants} />
-					<Route exact path='/app/reviews' component={Reviews} />
-					<Route exact path='/app/profile' component={Profile} />
-					<Route exact path='/app/social' component={Social} />
-					<Route exact path='/app'>
+					<Route path='/app/about' component={About} />
+					<Route path='/app/events' component={Events} />
+					<Route path='/app/recipes' component={Recipes} />
+					<Route path='/app/restaurants' component={Restaurants} />
+					<Route path='/app/reviews' component={Reviews} />
+					<Route path='/app/profile' component={Profile} />
+					<Route path='/app/social' component={Social} />
+					<Route path='/app'>
 						<Redirect to='/app/events' />
 					</Route>
 				</IonRouterOutlet>
