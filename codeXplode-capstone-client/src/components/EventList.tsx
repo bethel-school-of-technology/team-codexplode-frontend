@@ -13,6 +13,7 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardSubtitle,
+  IonButton,
 } from '@ionic/react';
 import { useContext, useEffect, useState } from 'react';
 import { trash } from 'ionicons/icons';
@@ -22,7 +23,7 @@ import { EventContext } from '../contexts/EventContext';
 interface ContainerProps {}
 
 const EventList: React.FC<ContainerProps> = () => {
-  let { deleteEvent, editEvent } = useContext(EventContext);
+  let { deleteEvent, editEvent, events } = useContext(EventContext);
   const [localUser, setLocalUser] = useState();
 
   const decodeJWT = (token: any) => {
@@ -34,6 +35,7 @@ const EventList: React.FC<ContainerProps> = () => {
   };
 
   useEffect(() => {
+    console.log(events);
     async function fetch() {
       const token = localStorage.getItem('token');
       let user = await decodeJWT(token);
@@ -64,106 +66,43 @@ const EventList: React.FC<ContainerProps> = () => {
       });
   };
 
-  return (
-    <div>
-      <div>
-        <EventContext.Consumer>
-          {({ events }) => {
-            console.log(localUser);
-            return (
-              <IonList>
-                {/* <IonListHeader color={'warning'}>
-									<IonLabel>Incomplete</IonLabel>
-								</IonListHeader> */}
-                {events.map((event: any) => {
-                  // if (event.eventComplete === false) {
-                  return (
-                    <div>
-                      <IonCard key={event._id}>
-                        <img
-                          alt='Silhouette of mountains'
-                          src='https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Layered-Tortilla-Pie_exps5947_BS2282136A04_15_2b_RMS.jpg'
-                        />
-                        <IonCardHeader>
-                          <IonCardTitle>{event.title}</IonCardTitle>
-                          <IonCardSubtitle>{event.cuisine}</IonCardSubtitle>
-                        </IonCardHeader>
+  const checkUser = (event: any) => {
+    if (localUser === event.host?._id) {
+      return (
+        <div>
+          <IonButton color='warning' expand='block'>Edit</IonButton>
+          <IonButton color='danger' expand='block'>Delete</IonButton>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
 
-                        <IonCardContent>
-                          <p>{event.description}</p>
-                          <p>Meal: {event.meal}</p>
-                        </IonCardContent>
-                      </IonCard>
-                      {/* <IonItemSliding>
-													<IonList>
-														<IonItem>
-															<IonLabel>{event.title}</IonLabel>
-															<IonCheckbox
-																onIonChange={() => eventIncomplete(event)}
-																slot={'end'}
-															></IonCheckbox>
-														</IonItem>
-														<IonItemOptions side={'end'}>
-															<IonItemOption
-																onClick={() => slideToDelete(event.id)}
-																color={'danger'}
-															>
-																<IonIcon
-																	slot={'icon-only'}
-																	icon={trash}
-																></IonIcon>
-															</IonItemOption>
-														</IonItemOptions>
-													</IonList>
-												</IonItemSliding> */}
-                    </div>
-                  );
-                  // }
-                })}
-              </IonList>
-            );
-          }}
-        </EventContext.Consumer>
-      </div>
-      {/* <div>
-				<EventContext.Consumer>
-					{({ events }) => {
-						return (
-							<IonList>
-								<IonListHeader color={'success'}>
-									<IonLabel color={'light'} className={'ion-margin'}>
-										Complete
-									</IonLabel>
-								</IonListHeader>
-								{events.map((event: any) => {
-									// if (event.eventComplete === true) {
-										return (
-											<IonItemSliding>
-												<IonItem>
-													<IonLabel>{event.title}</IonLabel>
-													<IonCheckbox
-														onIonChange={() => eventComplete(Event)}
-														slot={'end'}
-													></IonCheckbox>
-												</IonItem>
-												<IonItemOptions side={'end'}>
-													<IonItemOption
-														onClick={() => slideToDelete(event.id)}
-														color={'danger'}
-													>
-														<IonIcon slot={'icon-only'} icon={trash}></IonIcon>
-													</IonItemOption>
-												</IonItemOptions>
-											</IonItemSliding>
-										);
-									//}
-								})}
-							</IonList>
-						);
-					}}
-				</EventContext.Consumer>
-			</div> */}
-    </div>
+  return (
+    <IonList>
+      {events.map((event: any) => {
+        return (
+          <IonCard key={event._id}>
+            <img
+              alt='Silhouette of mountains'
+              src='https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Layered-Tortilla-Pie_exps5947_BS2282136A04_15_2b_RMS.jpg'
+            />
+            <IonCardHeader>
+              <IonCardTitle>{event.title}</IonCardTitle>
+              <IonCardSubtitle>{event.cuisine}</IonCardSubtitle>
+            </IonCardHeader>
+
+            <IonCardContent>
+              <p>{event.description}</p>
+              <p>Meal: {event.meal}</p>
+              <hr />
+              {checkUser(event)}
+            </IonCardContent>
+          </IonCard>
+        );
+      })}
+    </IonList>
   );
 };
 

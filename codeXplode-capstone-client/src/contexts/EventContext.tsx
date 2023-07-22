@@ -8,10 +8,10 @@ interface Event {
     title: string;
     description: string;
     location?: string;
-    host: string;
+    host: any;
     cuisine: string;
     meal: string;
-    participants?: string;
+    participants?: any;
     when: string;
 }
 
