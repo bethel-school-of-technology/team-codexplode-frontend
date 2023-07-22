@@ -17,7 +17,7 @@ import {
 import { useContext } from 'react';
 import { trash } from 'ionicons/icons';
 import './EventList.css';
-import {EventContext} from "../contexts/EventContext";
+import { EventContext } from '../contexts/EventContext';
 
 interface ContainerProps {}
 
@@ -25,14 +25,14 @@ const EventList: React.FC<ContainerProps> = () => {
 	let { deleteEvent, editEvent } = useContext(EventContext);
 
 	const eventComplete = (event: any) => {
-		editEvent({...event, completed: true})
+		editEvent({ ...event, completed: true })
 			.then(() => {})
 			.catch((error: any) => {
 				console.log(error);
 			});
 	};
 	const eventIncomplete = (event: any) => {
-		editEvent({...event, completed: false})
+		editEvent({ ...event, completed: false })
 			.then(() => {})
 			.catch((error: any) => {
 				console.log(error);
@@ -51,7 +51,7 @@ const EventList: React.FC<ContainerProps> = () => {
 			<div>
 				<EventContext.Consumer>
 					{({ events }) => {
-						console.log(events); 
+						console.log(events);
 						return (
 							<IonList>
 								{/* <IonListHeader color={'warning'}>
@@ -59,21 +59,24 @@ const EventList: React.FC<ContainerProps> = () => {
 								</IonListHeader> */}
 								{events.map((event: any) => {
 									// if (event.eventComplete === false) {
-										return (
-											<div>
-												<IonCard>
-      <img alt="Silhouette of mountains" src="https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Layered-Tortilla-Pie_exps5947_BS2282136A04_15_2b_RMS.jpg" />
-      <IonCardHeader>
-        <IonCardTitle>{event.title}</IonCardTitle>
-        <IonCardSubtitle>{event.cuisine}</IonCardSubtitle>
-      </IonCardHeader>
+									return (
+										<div>
+											<IonCard>
+												<img
+													alt='Silhouette of mountains'
+													src='https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Layered-Tortilla-Pie_exps5947_BS2282136A04_15_2b_RMS.jpg'
+												/>
+												<IonCardHeader>
+													<IonCardTitle>{event.title}</IonCardTitle>
+													<IonCardSubtitle>{event.cuisine}</IonCardSubtitle>
+												</IonCardHeader>
 
-      <IonCardContent>
-		<p>{event.description}</p>
-		<p>Meal: {event.meal}</p>
-	  </IonCardContent>
-    </IonCard>
-												{/* <IonItemSliding>
+												<IonCardContent>
+													<p>{event.description}</p>
+													<p>Meal: {event.meal}</p>
+												</IonCardContent>
+											</IonCard>
+											{/* <IonItemSliding>
 													<IonList>
 														<IonItem>
 															<IonLabel>{event.title}</IonLabel>
@@ -95,8 +98,8 @@ const EventList: React.FC<ContainerProps> = () => {
 														</IonItemOptions>
 													</IonList>
 												</IonItemSliding> */}
-											</div>
-										);
+										</div>
+									);
 									// }
 								})}
 							</IonList>
