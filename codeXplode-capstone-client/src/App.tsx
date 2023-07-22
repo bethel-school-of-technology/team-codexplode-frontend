@@ -41,6 +41,7 @@ import { Icon } from 'ionicons/dist/types/components/icon/icon';
 import Menu from './pages/Menu';
 import About from './pages/About';
 import EventForm from './pages/EventForm';
+import EditForm from './pages/EditForm';
 
 setupIonicReact();
 
@@ -50,6 +51,7 @@ const App: React.FC = () => (
 			<IonRouterOutlet>
 				<Route exact path='/' component={Login} />
 				<Route path='/app' component={Menu} />
+				<Route path='/edit/:eventId' component={EditForm} />
 				<Route path='/about' component={About} />
 				<Route path='/new-event' component={EventForm} />
 			</IonRouterOutlet>

@@ -14,6 +14,8 @@ import {
   IonCardTitle,
   IonCardSubtitle,
   IonButton,
+  IonPage,
+  IonContent,
 } from '@ionic/react';
 import { useContext, useEffect, useState } from 'react';
 import { trash } from 'ionicons/icons';

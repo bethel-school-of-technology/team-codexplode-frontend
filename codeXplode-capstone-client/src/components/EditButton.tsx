@@ -1,12 +1,13 @@
-import { IonButton } from '@ionic/react';
+import { IonButton, useIonRouter } from '@ionic/react';
 
 interface ButtonProps {
     eventId: string;
 }
 
 const EditButton: React.FC<ButtonProps> = ({ eventId }) => {
+    const navigation = useIonRouter();
   const handleEdit = () => {
-    console.log(eventId);
+    navigation.push(`/edit/${eventId}`, 'forward', 'replace');
   };
 
   return <IonButton color='warning' expand='block' onClick={handleEdit}>Edit</IonButton>;
