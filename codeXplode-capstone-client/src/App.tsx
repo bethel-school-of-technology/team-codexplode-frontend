@@ -1,7 +1,17 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import {
+	IonApp,
+	IonIcon,
+	IonLabel,
+	IonRouterOutlet,
+	IonTabBar,
+	IonTabButton,
+	IonTabs,
+	setupIonicReact
+} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-// import { ellipse, square, triangle } from 'ionicons/icons';
+import Home from './pages/Home';
+import { ellipse, square, triangle } from 'ionicons/icons';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -31,6 +41,9 @@ import { Icon } from 'ionicons/dist/types/components/icon/icon';
 import Menu from './pages/Menu';
 import About from './pages/About';
 import EventForm from './pages/EventForm';
+import EventList from './components/EventList';
+import Events from './pages/Events';
+import SignUp from './pages/SignUp';
 
 setupIonicReact();
 
@@ -38,10 +51,12 @@ const App: React.FC = () => (
 	<IonApp>
 		<IonReactRouter>
 			<IonRouterOutlet>
-				<Route exact path='/' component={Login} />
+				<Route exact path='/login' component={Login} />
 				<Route path='/app' component={Menu} />
 				<Route path='/about' component={About} />
 				<Route path='/new-event' component={EventForm} />
+				<Route path='/event-list' component={Events} />
+				<Route path='/signup' component={SignUp} />
 			</IonRouterOutlet>
 		</IonReactRouter>
 	</IonApp>
