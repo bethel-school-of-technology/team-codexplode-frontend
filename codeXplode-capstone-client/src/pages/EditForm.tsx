@@ -24,6 +24,7 @@ const EditForm: React.FC = () => {
   const navigation = useIonRouter();
 
   const [event, setEvent] = useState({
+    _id: 0,
     host: '',
     title: '',
     description: '',
@@ -40,13 +41,14 @@ const EditForm: React.FC = () => {
     async function fetch() {
       await getEvent(eventId).then((res) =>
         setEvent({
-          host: res.host,
+          _id: eventId,
+          host: res.host._id,
           title: res.title,
           description: res.description,
           cuisine: res.cuisine,
           meal: res.meal,
-          location: res.location,
-          mediaCardUrl: res.mediaCardUrl,
+          location: res.location ? res.location : '',
+          mediaCardUrl: res.mediaCardUrl ? res.mediaCardUrl : '',
           when: res.when,
         })
       );

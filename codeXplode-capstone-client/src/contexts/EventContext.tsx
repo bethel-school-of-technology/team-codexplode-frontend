@@ -4,11 +4,11 @@ import React, {createContext, useEffect, useState} from 'react';
 import axios from 'axios';
 
 interface Event {
-    id?: number;
+    _id?: number;
     title: string;
     description: string;
     location?: string;
-    host: any;
+    host?: any;
     cuisine: string;
     meal: string;
     mediaCardUrl?: string;
@@ -63,8 +63,10 @@ export const EventProvider = ({ children }: EventProviderProps) => {
         });
     }
 
-    function editEvent(): Promise<Event> {
-        return axios.put(baseUrl + Event, Event).then((response) => {
+    function editEvent(event: Event): Promise<Event> {
+        const token = { Authorization: `Bearer ${localStorage.getItem('token')}` }
+
+        return axios.put(`${baseUrl}/${event._id}`, event, { headers: token }).then((response) => {
             getAllEvents();
             return new Promise((resolve) => resolve(response.data));
         });
