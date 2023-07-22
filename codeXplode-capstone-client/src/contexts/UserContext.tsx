@@ -61,7 +61,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 
   function addUser(user: any): Promise<User> {
     return axios.post(baseUrl, user).then((response) => {
-      getAllUsers();
+      //getAllUsers();
       return new Promise((resolve) => resolve(response.data));
     });
   }
