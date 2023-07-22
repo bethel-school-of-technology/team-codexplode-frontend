@@ -48,34 +48,34 @@ const EventList: React.FC<ContainerProps> = () => {
     fetch();
   }, []);
 
-  const eventComplete = (event: any) => {
-    editEvent({ ...event, completed: true })
-      .then(() => {})
-      .catch((error: any) => {
-        console.log(error);
-      });
-  };
-  const eventIncomplete = (event: any) => {
-    editEvent({ ...event, completed: false })
-      .then(() => {})
-      .catch((error: any) => {
-        console.log(error);
-      });
-  };
-  const slideToDelete = (id: number) => {
-    deleteEvent(id)
-      .then(() => {})
-      .catch((error: any) => {
-        console.log(error);
-      });
-  };
+  // const eventComplete = (event: any) => {
+  //   editEvent({ ...event, completed: true })
+  //     .then(() => {})
+  //     .catch((error: any) => {
+  //       console.log(error);
+  //     });
+  // };
+  // const eventIncomplete = (event: any) => {
+  //   editEvent({ ...event, completed: false })
+  //     .then(() => {})
+  //     .catch((error: any) => {
+  //       console.log(error);
+  //     });
+  // };
+  // const slideToDelete = (id: number) => {
+  //   deleteEvent(id)
+  //     .then(() => {})
+  //     .catch((error: any) => {
+  //       console.log(error);
+  //     });
+  // };
 
   const checkUser = (event: any) => {
     if (localUser === event.host?._id) {
       return (
         <div>
           <EditButton eventId={event._id} />
-          <DeleteButton />
+          <DeleteButton eventId={event._id} />
         </div>
       );
     } else {

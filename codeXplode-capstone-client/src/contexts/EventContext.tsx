@@ -21,7 +21,7 @@ export const EventContext = createContext<EventContextProps>({
     getAllEvents: () => Promise.resolve(),
     addEvent: (event: Event) => Promise.resolve(event),
     editEvent: (event: Event) => Promise.resolve(event),
-    deleteEvent: (id: number) => Promise.resolve(id),
+    deleteEvent: (id: number) => Promise.resolve({}),
     getEvent: (id: number) => Promise.resolve(id),
 });
 
@@ -30,7 +30,7 @@ export interface EventContextProps {
     getAllEvents: () => Promise<void>;
     addEvent: (event: Event) => Promise<Event>;
     editEvent: (event: Event) => Promise<Event>;
-    deleteEvent: (id: number) => Promise<number>;
+    deleteEvent: (id: number) => Promise<object>;
     getEvent: (id: number) => Promise<any>;
 }
 
@@ -72,8 +72,10 @@ export const EventProvider = ({ children }: EventProviderProps) => {
         });
     }
 
-    function deleteEvent(id: number): Promise<number> {
-        return axios.put(baseUrl + id).then((response) => {
+    function deleteEvent(id: number): Promise<object> {
+        const token = { Authorization: `Bearer ${localStorage.getItem('token')}` }
+
+        return axios.delete(`${baseUrl}/${id}`, { headers: token }).then((response) => {
             getAllEvents();
             return new Promise((resolve) => resolve(response.data));
         });
