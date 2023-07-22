@@ -41,7 +41,7 @@ const SignUp: React.FC = () => {
 		addUser(user)
 			.then((userData) => {
 				//localStorage.setItem('token', token);
-				navigation.push('/', 'forward', 'replace');
+				navigation.push('/login', 'forward', 'replace');
 			})
 			.catch((error) => {
 				console.log(error);
