@@ -72,7 +72,7 @@ const EventList: React.FC<ContainerProps> = () => {
     if (localUser === event.host?._id) {
       return (
         <div>
-          <EditButton />
+          <EditButton event={event} />
           <DeleteButton />
         </div>
       );

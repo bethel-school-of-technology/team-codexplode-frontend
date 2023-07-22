@@ -1,8 +1,12 @@
 import { IonButton } from '@ionic/react';
 
-const EditButton: React.FC = () => {
+interface ButtonProps {
+    event: any;
+}
+
+const EditButton: React.FC<ButtonProps> = (event) => {
   const handleEdit = () => {
-    console.log('edit');
+    console.log(event);
   };
 
   return <IonButton color='warning' expand='block' onClick={handleEdit}>Edit</IonButton>;
