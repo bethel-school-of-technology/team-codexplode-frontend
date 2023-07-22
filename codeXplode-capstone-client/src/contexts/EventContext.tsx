@@ -1,5 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react';
-
+import React, { createContext, useEffect, useState } from 'react';
 
 import axios from 'axios';
 
@@ -35,33 +34,33 @@ export interface EventContextProps {
 }
 
 interface EventProviderProps {
-    children: React.ReactNode;
+	children: React.ReactNode;
 }
 
 export const EventProvider = ({ children }: EventProviderProps) => {
-    const [events, setEvents] = useState<Event[]>([]);
-    const baseUrl = 'http://localhost:3000/api/event';
+	const [events, setEvents] = useState<Event[]>([]);
+	const baseUrl = 'http://localhost:3000/api/events';
 
-    useEffect(() => {
-        console.log('useEffect');
-    	async function getEvents() {
-    		await getAllEvents();
-    	}
-    	getEvents();
-    }, []);
+	useEffect(() => {
+		console.log('useEffect');
+		async function getEvents() {
+			await getAllEvents();
+		}
+		getEvents();
+	}, []);
 
-    function getAllEvents() {
-        return axios.get(baseUrl).then((response) => setEvents(response.data));
-    }
+	function getAllEvents() {
+		return axios.get(baseUrl).then((response) => setEvents(response.data));
+	}
 
-    function addEvent(event: any): Promise<Event> {
-        const token = { Authorization: `Bearer ${localStorage.getItem('token')}` };
+	function addEvent(event: any): Promise<Event> {
+		const token = { Authorization: `Bearer ${localStorage.getItem('token')}` };
 
-        return axios.post(baseUrl, event, { headers: token }).then((response) => {
-            getAllEvents();
-            return new Promise((resolve) => resolve(response.data));
-        });
-    }
+		return axios.post(baseUrl, event, { headers: token }).then((response) => {
+			getAllEvents();
+			return new Promise((resolve) => resolve(response.data));
+		});
+	}
 
     function editEvent(event: Event): Promise<Event> {
         const token = { Authorization: `Bearer ${localStorage.getItem('token')}` }
