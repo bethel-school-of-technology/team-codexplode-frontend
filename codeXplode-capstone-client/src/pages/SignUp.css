@@ -1,0 +1,24 @@
+.signup {
+    text-align: center;
+    margin: 50px;
+    border: solid #bb7d3c 5px;
+    border-style: groove;
+   }
+   
+   .hi {
+       margin: 50px;
+       color: white;
+       font-size: 18px;
+   }
+   
+   .title {
+       text-align: center;
+       margin-bottom: 20px;
+       font-size: 40px;
+       color: #bb7d3c;
+   }
+
+   .form {
+    text-align: center;
+    margin-top: 30px;
+   }

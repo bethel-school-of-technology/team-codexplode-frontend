@@ -6,6 +6,7 @@ import {
   IonInput,
   IonItem,
   IonList,
+  IonPage,
   IonText,
   IonTitle,
   IonToolbar,
@@ -39,12 +40,13 @@ const Login: React.FC = () => {
   }
 
   return (
+    <IonPage>
     <IonContent>
       <IonToolbar color='light'>
         <IonButtons>
           <IonIcon slot='icon-only' />
         </IonButtons>
-        <img src='' />
+        <img src='/weliciousicon.png' />
         <IonTitle className='title'>we_Licious</IonTitle>
       </IonToolbar>
       <div className='login'>
@@ -53,7 +55,7 @@ const Login: React.FC = () => {
             <IonInput
               labelPlacement='floating'
               value={username}
-              onIonChange={(e) => setUsername(e.detail.value!)}>
+              onIonInput={(e) => setUsername(e.detail.value!)}>
               <div slot='label'>
                 Username <IonText color='danger'>(Required)</IonText>
               </div>
@@ -64,7 +66,7 @@ const Login: React.FC = () => {
               labelPlacement='floating'
               type='password'
               value={password}
-              onIonChange={(e) => setPassword(e.detail.value!)}>
+              onIonInput={(e) => setPassword(e.detail.value!)}>
               <div slot='label'>
                 Password <IonText color='danger'>(Required)</IonText>
               </div>
@@ -78,6 +80,7 @@ const Login: React.FC = () => {
         <p>Click here to create one!</p>
       </div>
     </IonContent>
+    </IonPage>
   );
 };
 
