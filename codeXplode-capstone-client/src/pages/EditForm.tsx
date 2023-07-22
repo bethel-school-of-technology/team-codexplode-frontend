@@ -14,11 +14,13 @@ import {
   IonToolbar,
   useIonRouter,
 } from '@ionic/react';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { EventContext } from '../contexts/EventContext';
+import { useParams } from 'react-router';
 
 const EditForm: React.FC = () => {
-  let { editEvent } = useContext(EventContext);
+  const { editEvent, getEvent } = useContext(EventContext);
+  const { eventId } = useParams<any>();
   const navigation = useIonRouter();
 
   const [event, setEvent] = useState({
@@ -33,6 +35,24 @@ const EditForm: React.FC = () => {
   });
 
   let { title, description, cuisine, meal, location, mediaCardUrl, when } = event;
+
+  useEffect(() => {
+    async function fetch() {
+      await getEvent(eventId).then((res) =>
+        setEvent({
+          host: res.host,
+          title: res.title,
+          description: res.description,
+          cuisine: res.cuisine,
+          meal: res.meal,
+          location: res.location,
+          mediaCardUrl: res.mediaCardUrl,
+          when: res.when,
+        })
+      );
+    }
+    fetch();
+  }, []);
 
   const submit = () => {
     console.log(event);
@@ -53,10 +73,7 @@ const EditForm: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot='start'>
-            <IonMenuButton></IonMenuButton>
-          </IonButtons>
-          <IonTitle className='ion-text-center'>New Event</IonTitle>
+          <IonTitle className='ion-text-center'>Edit Event</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className='ion-padding'>

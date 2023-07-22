@@ -1,7 +1,7 @@
 import { IonButton, useIonRouter } from '@ionic/react';
 
 interface ButtonProps {
-    eventId: string;
+    eventId: any;
 }
 
 const EditButton: React.FC<ButtonProps> = ({ eventId }) => {

@@ -11,6 +11,7 @@ interface Event {
     host: any;
     cuisine: string;
     meal: string;
+    mediaCardUrl?: string;
     participants?: any;
     when: string;
 }
@@ -20,8 +21,8 @@ export const EventContext = createContext<EventContextProps>({
     getAllEvents: () => Promise.resolve(),
     addEvent: (event: Event) => Promise.resolve(event),
     editEvent: (event: Event) => Promise.resolve(event),
-    deleteEvent: (id: number) => Promise.resolve(id)
-
+    deleteEvent: (id: number) => Promise.resolve(id),
+    getEvent: (id: number) => Promise.resolve(id),
 });
 
 export interface EventContextProps {
@@ -30,7 +31,7 @@ export interface EventContextProps {
     addEvent: (event: Event) => Promise<Event>;
     editEvent: (event: Event) => Promise<Event>;
     deleteEvent: (id: number) => Promise<number>;
-
+    getEvent: (id: number) => Promise<any>;
 }
 
 interface EventProviderProps {
@@ -76,6 +77,13 @@ export const EventProvider = ({ children }: EventProviderProps) => {
         });
     }
 
+    // function to get one event by id:
+    function getEvent(id: number): Promise<any> {
+        return axios.get(`${baseUrl}/${id}`).then((response) => {
+            return new Promise((resolve) => resolve(response.data));
+        });
+    }
+
     return (
         <EventContext.Provider
             value={{
@@ -83,7 +91,8 @@ export const EventProvider = ({ children }: EventProviderProps) => {
                 getAllEvents,
                 addEvent,
                 editEvent,
-                deleteEvent
+                deleteEvent,
+                getEvent
             }}
 
         >
