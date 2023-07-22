@@ -1,8 +1,11 @@
 import { IonButton } from '@ionic/react';
+import showConfirm from '../hooks/Confirm';
 
 const DeleteButton: React.FC = () => {
   const handleDelete = () => {
-    console.log('delete');
+    showConfirm('Confirm', 'Are you sure you want to delete this event?').then((confirmed) => {
+      console.log('Confirmed:', confirmed);
+    });
   };
 
   return <IonButton color='danger' expand='block' onClick={handleDelete}>Delete</IonButton>;
