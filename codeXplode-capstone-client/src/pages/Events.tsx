@@ -9,7 +9,6 @@ import {
 	IonToolbar
 } from '@ionic/react';
 import { logOutOutline } from 'ionicons/icons';
-import BlankPage from '../components/BlankPage';
 import EventList from '../components/EventList';
 import './Events.css';
 

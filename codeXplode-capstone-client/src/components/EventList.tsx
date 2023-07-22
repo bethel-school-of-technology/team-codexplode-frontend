@@ -56,7 +56,7 @@ const EventList: React.FC<ContainerProps> = () => {
 							<IonList>
 								{events.map((event: any) => {
 									return (
-										<div>
+										<div key={event.id}>
 											<IonCard>
 												<img
 													alt='Silhouette of mountains'
