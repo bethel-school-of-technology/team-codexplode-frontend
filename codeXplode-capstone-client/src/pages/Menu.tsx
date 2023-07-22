@@ -1,18 +1,4 @@
-import {
-	IonButton,
-	IonContent,
-	IonHeader,
-	IonIcon,
-	IonItem,
-	IonMenu,
-	IonMenuToggle,
-	IonPage,
-	IonRedirect,
-	IonRouterOutlet,
-	IonSplitPane,
-	IonTitle,
-	IonToolbar
-} from '@ionic/react';
+import * as react from 'react';
 import BlankPage from '../components/BlankPage';
 import './Login.css';
 import {
@@ -25,7 +11,7 @@ import {
 	peopleCircleOutline,
 	starHalfOutline
 } from 'ionicons/icons';
-import { Navigate, Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router';
 import About from './About';
 import Events from './Events';
 import Recipes from './Recipes';
@@ -33,6 +19,20 @@ import Restaurants from './Restaurants';
 import Reviews from './Reviews';
 import Profile from './Profile';
 import Social from './Social';
+import {
+	IonButton,
+	IonContent,
+	IonHeader,
+	IonIcon,
+	IonItem,
+	IonMenu,
+	IonMenuToggle,
+	IonPage,
+	IonRouterOutlet,
+	IonSplitPane,
+	IonTitle,
+	IonToolbar
+} from '@ionic/react';
 
 const Menu: React.FC = () => {
 	const paths = [
@@ -72,15 +72,15 @@ const Menu: React.FC = () => {
 				</IonMenu>
 
 				<IonRouterOutlet id='main'>
-					<Route path='/app/about' element={<About />} />
-					<Route path='/app/events' element={<Events />} />
-					<Route path='/app/recipes' element={<Recipes />} />
-					<Route path='/app/restaurants' element={<Restaurants />} />
-					<Route path='/app/reviews' element={<Reviews />} />
-					<Route path='/app/profile' element={<Profile />} />
-					<Route path='/app/social' element={<Social />} />
+					<Route path='/app/about' component={About} />
+					<Route path='/app/events' component={Events} />
+					<Route path='/app/recipes' component={Recipes} />
+					<Route path='/app/restaurants' component={Restaurants} />
+					<Route path='/app/reviews' component={Reviews} />
+					<Route path='/app/profile' component={Profile} />
+					<Route path='/app/social' component={Social} />
 					<Route path='/app'>
-						<Navigate to='/app/events' />
+						<Redirect to='/app/events' />
 					</Route>
 				</IonRouterOutlet>
 			</IonSplitPane>
