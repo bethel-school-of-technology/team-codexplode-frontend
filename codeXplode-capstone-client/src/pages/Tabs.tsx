@@ -26,6 +26,7 @@ import Profile from './Profile';
 import Social from './Social';
 import { Redirect, Route } from 'react-router';
 import SignUp from './SignUp';
+import EditForm from './EditForm';
 
 const Tabs: React.FC = () => {
 	return (
@@ -33,6 +34,7 @@ const Tabs: React.FC = () => {
 			<IonRouterOutlet>
 				<Route exact path='/app/events' component={Events} />
 				<Route exact path='/app/events/about' component={About} />
+				<Route exact path='/app/events/:eventId' component={EditForm} />
 				<Route exact path='/app/recipes' component={Recipes} />
 				<Route exact path='/app/restaurants' component={Restaurants} />
 				<Route exact path='/app/reviews' component={Reviews} />
