@@ -9,7 +9,6 @@ import {
 	IonToolbar
 } from '@ionic/react';
 import { logOutOutline } from 'ionicons/icons';
-import BlankPage from '../components/BlankPage';
 import EventList from '../components/EventList';
 import './Events.css';
 
@@ -28,7 +27,7 @@ const Events: React.FC = () => {
 				</IonToolbar>
 			</IonHeader>
 			<IonContent className='ion-padding'>
-				<IonButton routerLink='/app/events/about' expand='full'>
+				<IonButton routerLink='/app/about' expand='full'>
 					What are we about!?
 				</IonButton>
 				<EventList />
