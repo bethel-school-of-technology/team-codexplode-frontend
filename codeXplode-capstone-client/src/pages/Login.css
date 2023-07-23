@@ -12,4 +12,20 @@
     margin-bottom: 20px;
     font-size: 40px;
     color: #bb7d3c;
+    margin-left: 20px;
 }
+
+.link {
+    color: white;
+    font-size: small;
+    text-decoration: none;
+    margin-left: 55px;
+}
+
+.logo {
+    margin: 25px;
+    margin-bottom: 50px;
+    height: 70px;
+    width: 70px;
+}
+
