@@ -28,6 +28,7 @@
 		"@ionic/pwa-elements": "^3.1.1",
 		"@ionic/react": "^7.0.0",
 		"@ionic/react-router": "^7.0.0",
+		"@lob/react-address-autocomplete": "^2.2.0",
 		"@react-navigation/native": "^6.1.7",
 		"@react-navigation/native-stack": "^6.9.13",
 		"@types/react-router": "^5.1.20",
