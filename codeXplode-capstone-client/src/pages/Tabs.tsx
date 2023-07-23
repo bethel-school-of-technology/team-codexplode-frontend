@@ -11,6 +11,8 @@ import {
 	colorFillOutline,
 	fastFoodOutline,
 	homeOutline,
+	informationCircle,
+	informationCircleOutline,
 	logOutOutline,
 	logoWechat,
 	newspaperOutline,
@@ -59,6 +61,10 @@ const Tabs: React.FC = () => {
 				<IonTabButton tab='Reviews' href='/app/reviews'>
 					<IonIcon icon={logoWechat}></IonIcon>
 					<IonLabel>Reviews</IonLabel>
+				</IonTabButton>
+				<IonTabButton tab='About' href='/app/About'>
+					<IonIcon icon={informationCircleOutline}></IonIcon>
+					<IonLabel>About</IonLabel>
 				</IonTabButton>
 			</IonTabBar>
 		</IonTabs>

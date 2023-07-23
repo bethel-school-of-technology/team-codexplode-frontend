@@ -56,6 +56,7 @@ const App: React.FC = () => (
 			<IonRouterOutlet>
 				<Route exact path='/' component={Login} />
 				<Route path='/app' component={Tabs} />
+				{/* <Route path='/app/events' component={Events} /> */}
 				{/*<Route path='/about' component={About} />
 				<Route path='/new-event' component={EventForm} />
 				<Route path='/event-list' component={Events} />
