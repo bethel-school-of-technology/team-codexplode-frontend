@@ -39,7 +39,7 @@ interface EventProviderProps {
 
 export const EventProvider = ({ children }: EventProviderProps) => {
 	const [events, setEvents] = useState<Event[]>([]);
-	const baseUrl = 'http://localhost:3000/api/event';
+	const baseUrl = 'http://localhost:3000/api/events';
 
 	useEffect(() => {
 		console.log('useEffect');
