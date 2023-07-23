@@ -46,7 +46,7 @@ import EditForm from './pages/EditForm';
 // import EventForm from './pages/EventForm';
 // import EventList from './components/EventList';
 // import Events from './pages/Events';
-// import SignUp from './pages/SignUp';
+import SignUp from './pages/SignUp';
 
 setupIonicReact();
 
@@ -56,10 +56,10 @@ const App: React.FC = () => (
 			<IonRouterOutlet>
 				<Route exact path='/' component={Login} />
 				<Route path='/app' component={Tabs} />
-				{/*<Route path='/about' component={About} />
-				<Route path='/new-event' component={EventForm} />
-				<Route path='/event-list' component={Events} />
-				<Route path='/signup' component={SignUp} /> */}
+				{/* <Route path='/about' component={About} />
+				<Route path='/new-event' component={EventForm} /> */}
+				{/* <Route path='/event-list' component={Events} /> */}
+				<Route path='/signup' component={SignUp} /> 
 			</IonRouterOutlet>
 		</IonReactRouter>
 	</IonApp>
