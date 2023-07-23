@@ -1,6 +1,9 @@
-import { setStore } from '../store/RecordsStore';
+import { setStore } from '../mdata/RecordsStore';
 
-export const getRecords = async (currentPoint) => {
+export const getRecords = async (currentPoint: {
+	latitude: any;
+	longitude: any;
+}) => {
 	var latitude = currentPoint.latitude,
 		longitude = currentPoint.longitude,
 		radius = 1000,
@@ -13,7 +16,7 @@ export const getRecords = async (currentPoint) => {
 	setStore(data);
 };
 
-export const getRecord = async (recordId) => {
+export const getRecord = async (recordId: any) => {
 	const response = await fetch(
 		`http://localhost:4000/get-record?id=${recordId}`
 	);

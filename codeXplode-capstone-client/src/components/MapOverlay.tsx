@@ -6,7 +6,7 @@ import {
 	IonIcon,
 	IonNote,
 	IonRow
-} from '@ionce/react';
+} from '@ionic/react';
 import {
 	arrowForward,
 	call,
@@ -18,7 +18,7 @@ import {
 	pricetags,
 	pricetagsOutline
 } from 'ionicons/icons';
-import styles from '../mstylesheets/MapOverlay';
+import styles from '../mstylesheets/MapOverlay.module.scss';
 
 export const MapOverlay = ({ record }) => (
 	<div className={styles.overlayContainer}>
@@ -53,20 +53,20 @@ export const MapOverlay = ({ record }) => (
 
 		<IonRow className='ion-no-padding ion-no-margin ion-margin-top'>
 			{record.phone && (
-				<IconCol size='6' className='ion-no-padding ion-no-margin'>
+				<IonCol size='6' className='ion-no-padding ion-no-margin'>
 					<IonButton color='primary' fill='outline' size='small' expand='block'>
 						<IonIcon icon={callOutline} />
 					</IonButton>
-				</IconCol>
+				</IonCol>
 			)}
 
-			<IconCol
+			<IonCol
 				size={record.phone ? '6' : '12 '}
 				className='ion-no-padding ion-no-margin'>
 				<IonButton color='primary' fill='outline' size='small' expand='block'>
 					<IonIcon icon={navigateOutline} />
 				</IonButton>
-			</IconCol>
+			</IonCol>
 		</IonRow>
 	</div>
 );

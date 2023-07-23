@@ -7,7 +7,7 @@ export function MyMap() {
 	return (
 		<Map
 			height={300}
-			//   center={center}
+			//center={center}
 			zoom={zoom}
 			onBoundsChanged={({ center, zoom }) => {
 				setCenter(center);

@@ -1,13 +1,12 @@
 import { Store } from 'pullstate';
 
-const RecordsStore = new Store({
-	records: [],
-	center: []
-});
-
+interface RecordsStore {
+	records: [];
+	center: [];
+}
 export default RecordsStore;
 
-export const setStore = (records) => {
+export const setStore = (records: any) => {
 	RecordsStore.update((state) => {
 		state.records = records.allRecords;
 	});

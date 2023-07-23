@@ -1,11 +1,11 @@
-import { GeoLocation } from '@capacitor/geolocation';
+import { Geolocation } from '@capacitor/geolocation';
 import { Capacitor } from '@capacitor/core';
 
 const platform = Capacitor.getPlatform();
 
 export const getLocation = async () => {
 	const permission = await Geolocation.checkPermissions();
-	var coordinates;
+	let coordinates: any;
 
 	if (permission.location === 'granted') {
 		var options = {
@@ -19,6 +19,11 @@ export const getLocation = async () => {
 		if (platform === 'web') {
 			console.log('permission Denied');
 		} else {
+			var options = {
+				enableHighAccuracy: true,
+				timeout: 10000,
+				maximumAge: Infinity
+			};
 			await Geolocation.requestPermissions();
 			coordinates = await Geolocation.getCurrentPosition(options);
 		}
