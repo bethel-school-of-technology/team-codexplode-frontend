@@ -34,6 +34,7 @@ import './theme/variables.css';
 import Login from './pages/Login';
 import Tabs from './pages/Tabs';
 import Events from './pages/Events';
+import EditForm from './pages/EditForm';
 // import Profile from './pages/Profile';
 // import Recipes from './pages/Recipes';
 // import Restaurants from './pages/Restaurants';
@@ -55,7 +56,6 @@ const App: React.FC = () => (
 			<IonRouterOutlet>
 				<Route exact path='/' component={Login} />
 				<Route path='/app' component={Tabs} />
-				<Route path='/events' component={Events} />
 				{/*<Route path='/about' component={About} />
 				<Route path='/new-event' component={EventForm} />
 				<Route path='/event-list' component={Events} />
