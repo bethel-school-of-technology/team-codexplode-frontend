@@ -33,6 +33,7 @@
 		"@types/react-router-dom": "^5.3.3",
 		"axios": "^1.4.0",
 		"ionicons": "^7.0.0",
+		"node-fetch": "^2.6.12",
 		"pigeon-maps": "^0.21.3",
 		"pullstate": "^1.25.0",
 		"react": "^18.2.0",
