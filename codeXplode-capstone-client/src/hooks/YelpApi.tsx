@@ -5,6 +5,7 @@
 //t4t89UCiSnjKrLL_D7-ljoHxfD_iOnmqW3JSYZpsN5lT6Kvuhsys0Vq_7FGQpr-prilXt1VwXI8HN-tBazqFIkkUhvo5u73w3y8YYQWU29oVnt6l_zmUmMK3uZS9ZHYx
 export enum SearchType {
 	all = '',
+	name = 'name',
 	categories = 'catgeories',
 	rating = 'rating',
 	price = 'price',
@@ -37,27 +38,37 @@ export interface SearchResult {
 }
 
 export const YelpApi = () => {
-	const fetch = require('node-fetch');
-
-	const url =
+	const lat = 41.477142;
+	const long = -81.925546;
+	const yelpUrl =
 		'https://api.yelp.com/v3/businesses/search?location=en_US&latitude=41.477142&longitude=-81.925546';
-	const options = {
-		method: 'GET',
-		headers: {
-			accept: 'application/json',
-			Authorization:
-				'Bearer t4t89UCiSnjKrLL_D7-ljoHxfD_iOnmqW3JSYZpsN5lT6Kvuhsys0Vq_7FGQpr-prilXt1VwXI8HN-tBazqFIkkUhvo5u73w3y8YYQWU29oVnt6l_zmUmMK3uZS9ZHYx'
-		}
+	// const apiCall = (${yelpUrl}&{})
+
+	const searchData = async (name: string, type: SearchType): Promise<any> => {
+		const results = await fetch(yelpUrl);
+		require('node-fetch');
+
+		const options = {
+			method: 'GET',
+			headers: {
+				accept: 'application/json',
+				Authorization:
+					'Bearer t4t89UCiSnjKrLL_D7-ljoHxfD_iOnmqW3JSYZpsN5lT6Kvuhsys0Vq_7FGQpr-prilXt1VwXI8HN-tBazqFIkkUhvo5u73w3y8YYQWU29oVnt6l_zmUmMK3uZS9ZHYx'
+			}
+		};
+		return results.json();
 	};
 
-	const searchData = fetch(url, options)
-		.then((res: any) => res.json())
-		.then((json: any) => console.log(json))
-		.catch((err: any) => console.error('error:' + err));
+	const getResults = async () => {
+		const results = await fetch(yelpUrl)
+			.then((res: any) => res.json())
+			.then((json: any) => console.log(json))
+			.catch((err: any) => console.error('error:' + err));
+	};
 
 	return {
-		YelpApi,
-		searchData
+		searchData,
+		getResults
 	};
 };
 
