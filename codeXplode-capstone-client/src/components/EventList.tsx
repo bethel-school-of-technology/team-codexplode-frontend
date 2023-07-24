@@ -125,6 +125,28 @@ const EventList: React.FC<ContainerProps> = () => {
         </IonCardHeader>
         <IonCardContent>Coconut buns that are light, fluffy yeast rolls soaked in a sweet coconut syrup. A delicious treat!</IonCardContent>
       </IonCard>
+      {events.map((event: any) => {
+        return (
+          <IonCard key={event._id}>
+            <img
+              alt='Silhouette of mountains'
+              src={event.mediaCardUrl || "https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Layered-Tortilla-Pie_exps5947_BS2282136A04_15_2b_RMS.jpg"}
+            />
+            <IonCardHeader>
+              <IonCardTitle>{event.title}</IonCardTitle>
+              <IonCardSubtitle>{event.cuisine}</IonCardSubtitle>
+            </IonCardHeader>
+
+            <IonCardContent>
+              <p>{event.description}</p>
+              <p>Location: {event.location}</p>
+              <p>Meal: {event.meal}</p>
+              <hr />
+              {checkUser(event)}
+            </IonCardContent>
+          </IonCard>
+        )
+      })}
     </IonList>
   );
 };
