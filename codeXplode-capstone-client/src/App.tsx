@@ -1,17 +1,22 @@
 import { Redirect, Route } from 'react-router-dom';
 import {
 	IonApp,
-	// IonIcon,
-	// IonLabel,
+	IonIcon,
+	IonLabel,
 	IonRouterOutlet,
-	// IonTabBar,
-	// IonTabButton,
-	// IonTabs,
+	IonTabBar,
+	IonTabButton,
+	IonTabs,
 	setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import {
+	ellipse,
+	square,
+	triangle,
+	listOutline,
+	mapOutline
+} from 'ionicons/icons';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';

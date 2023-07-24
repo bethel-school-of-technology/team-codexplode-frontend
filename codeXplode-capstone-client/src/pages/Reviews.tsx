@@ -17,7 +17,7 @@ const Reviews: React.FC = () => {
 	return (
 		<IonPage>
 			<IonHeader>
-				<IonToolbar>
+				<IonToolbar color={'primary'}>
 					<IonButtons slot='start'>
 						<IonButton routerLink='/app/events' routerDirection='root'>
 							<IonIcon icon={caretBackCircleOutline}></IonIcon>
