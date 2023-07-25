@@ -62,7 +62,7 @@ const EventList: React.FC<ContainerProps> = () => {
 				console.log(error);
 			});
 	};
-	const slideToDelete = (id: number) => {
+	const slideToDelete = (id: string) => {
 		deleteEvent(id)
 			.then(() => {})
 			.catch((error: any) => {
