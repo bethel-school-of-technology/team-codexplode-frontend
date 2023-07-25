@@ -7,38 +7,41 @@ import {
 	IonTitle,
 	IonToolbar,
 	IonCard,
-	IonBackButton
+	IonBackButton,
+	IonButton,
+	IonIcon
 } from '@ionic/react';
 import './About.css';
+import { caretBackCircleOutline, logOutOutline } from 'ionicons/icons';
 
 const About: React.FC = () => {
 	return (
 		<IonPage>
 			<IonHeader>
-				<IonToolbar color='primary'>
-					<IonButtons color='start'>
-						<IonBackButton defaultHref='/app/events' />
+				<IonToolbar color={'primary'}>
+					<IonTitle>Our Story</IonTitle>
+					<IonButtons slot='start'>
+						<IonButton routerLink='/app/events' routerDirection='root'>
+							<IonIcon icon={caretBackCircleOutline}></IonIcon>
+							events
+						</IonButton>
 					</IonButtons>
-					<IonTitle>About</IonTitle>
+					<IonButtons slot='end'>
+						<IonButton routerLink='/' routerDirection='root'>
+							<IonIcon icon={logOutOutline}></IonIcon>
+							Logout
+						</IonButton>
+					</IonButtons>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent className='ion-padding'>
-				<IonCard>
-					<img
-						alt=''
-						src='C:\Users\bethe\Team_CodeXplode_Project\team-codexplode-frontend\codeXplode-capstone-client\resources\icon.png'
-					/>
-				</IonCard>
 				<div id='container'>
 					<h1>Hey There Foodies!</h1>
 					<p>
-						"A social platform to build connections between people through the
-						wonderful medium of foods"
+						"A social platform to build connections between people through the wonderful medium of
+						foods"
 					</p>
-					<p>
-						Food is a great connector, Come!, Let's build beautiful community
-						through foods!
-					</p>
+					<p>Food is a great connector, Come!, Let's build beautiful community through foods!</p>
 				</div>
 			</IonContent>
 		</IonPage>

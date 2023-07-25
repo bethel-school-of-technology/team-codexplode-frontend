@@ -26,6 +26,16 @@ export interface Result {
 	distance: number;
 }
 
+export enum SearchType {
+	all = '',
+	name = 'name',
+	categories = 'catgeories',
+	rating = 'rating',
+	price = 'price',
+	distance = 'distance'
+	// coordinates = 'latitude', 'longitude'
+}
+
 export const RestaurantContext = createContext<RestaurantContextProps>({
 	results: [],
 	getAllResults: () => Promise.resolve()

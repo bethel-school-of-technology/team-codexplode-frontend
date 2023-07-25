@@ -10,13 +10,7 @@ import {
 	setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import {
-	ellipse,
-	square,
-	triangle,
-	listOutline,
-	mapOutline
-} from 'ionicons/icons';
+import { ellipse, square, triangle, listOutline, mapOutline } from 'ionicons/icons';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -64,7 +58,7 @@ const App: React.FC = () => (
 				{/* <Route path='/about' component={About} />
 				<Route path='/new-event' component={EventForm} /> */}
 				{/* <Route path='/event-list' component={Events} /> */}
-				<Route path='/signup' component={SignUp} /> 
+				<Route path='/signup' component={SignUp} />
 			</IonRouterOutlet>
 		</IonReactRouter>
 	</IonApp>
