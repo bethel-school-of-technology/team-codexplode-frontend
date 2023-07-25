@@ -83,8 +83,6 @@ const EventList: React.FC<ContainerProps> = () => {
 		}
 	};
 
-	<IonList></IonList>;
-
 	return (
 		<IonList>
 			{events.map((event: any) => {
@@ -119,8 +117,7 @@ const EventList: React.FC<ContainerProps> = () => {
 					<IonCardSubtitle>American Cuisine</IonCardSubtitle>
 				</IonCardHeader>
 				<IonCardContent>
-					Cooked long, slow, and at a low temperature. This American classic
-					plate is a must.
+					Cooked long, slow, and at a low temperature. This American classic plate is a must.
 				</IonCardContent>
 			</IonCard>
 			<IonCard>
@@ -133,8 +130,8 @@ const EventList: React.FC<ContainerProps> = () => {
 					<IonCardSubtitle>Indian Cuisine</IonCardSubtitle>
 				</IonCardHeader>
 				<IonCardContent>
-					Crispy rice and lentil crepes stuffed with spiced and savory potato
-					filling. This is a popular breakfast snack.
+					Crispy rice and lentil crepes stuffed with spiced and savory potato filling. This is a
+					popular breakfast snack.
 				</IonCardContent>
 			</IonCard>
 			<IonCard>
@@ -147,8 +144,8 @@ const EventList: React.FC<ContainerProps> = () => {
 					<IonCardSubtitle>Mexican Cuisine</IonCardSubtitle>
 				</IonCardHeader>
 				<IonCardContent>
-					Corn served in a cup with chili powder, mayonnaise, cilantro, and
-					queso fresco. A fun snack to share.
+					Corn served in a cup with chili powder, mayonnaise, cilantro, and queso fresco. A fun
+					snack to share.
 				</IonCardContent>
 			</IonCard>
 			<IonCard>
@@ -161,9 +158,8 @@ const EventList: React.FC<ContainerProps> = () => {
 					<IonCardSubtitle>Filipino Cuisine</IonCardSubtitle>
 				</IonCardHeader>
 				<IonCardContent>
-					A popular dessert crafted from freshly grated cassava flour and
-					coconut milk baked on coals. A traditional cake to share during
-					gatherings.{' '}
+					A popular dessert crafted from freshly grated cassava flour and coconut milk baked on
+					coals. A traditional cake to share during gatherings.{' '}
 				</IonCardContent>
 			</IonCard>
 			<IonCard>
@@ -176,8 +172,8 @@ const EventList: React.FC<ContainerProps> = () => {
 					<IonCardSubtitle>Samoan Cuisine</IonCardSubtitle>
 				</IonCardHeader>
 				<IonCardContent>
-					Coconut buns that are light, fluffy yeast rolls soaked in a sweet
-					coconut syrup. A delicious treat!
+					Coconut buns that are light, fluffy yeast rolls soaked in a sweet coconut syrup. A
+					delicious treat!
 				</IonCardContent>
 			</IonCard>
 		</IonList>
