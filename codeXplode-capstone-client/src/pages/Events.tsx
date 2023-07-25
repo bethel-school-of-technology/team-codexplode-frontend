@@ -28,7 +28,7 @@ const Events: React.FC = () => {
 			</IonHeader>
 			<IonContent className='ion-padding'>
 				<IonButton routerLink='/app/about' expand='full'>
-					What are we about!?
+					What are we about!
 				</IonButton>
 				<EventList />
 			</IonContent>

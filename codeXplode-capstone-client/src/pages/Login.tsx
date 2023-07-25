@@ -12,7 +12,6 @@ import {
   useIonRouter,
   IonPage,
   IonNavLink,
-  IonLabel,
   IonRouterLink,
 } from "@ionic/react";
 import "./Login.css";

@@ -49,7 +49,7 @@ export const EventProvider = ({ children }: EventProviderProps) => {
 		getEvents();
 	}, []);
 
-	function getAllEvents() {
+  function getAllEvents() {
 		return axios.get(baseUrl).then((response) => setEvents(response.data));
 	}
 
@@ -62,44 +62,46 @@ export const EventProvider = ({ children }: EventProviderProps) => {
 		});
 	}
 
-    function editEvent(event: Event): Promise<Event> {
-        const token = { Authorization: `Bearer ${localStorage.getItem('token')}` }
+  function editEvent(event: Event): Promise<Event> {
+		const token = { Authorization: `Bearer ${localStorage.getItem('token')}` };
 
-        return axios.put(`${baseUrl}/${event._id}`, event, { headers: token }).then((response) => {
-            getAllEvents();
-            return new Promise((resolve) => resolve(response.data));
-        });
-    }
+		return axios
+			.put(`${baseUrl}/${event._id}`, event, { headers: token })
+			.then((response) => {
+				getAllEvents();
+				return new Promise((resolve) => resolve(response.data));
+		});
+	}
 
-    function deleteEvent(id: string): Promise<object> {
-        const token = { Authorization: `Bearer ${localStorage.getItem('token')}` }
+	function deleteEvent(id: string): Promise<object> {
+		const token = { Authorization: `Bearer ${localStorage.getItem('token')}` };
 
-        return axios.delete(`${baseUrl}/${id}`, { headers: token }).then((response) => {
-            getAllEvents();
-            return new Promise((resolve) => resolve(response.data));
-        });
-    }
+		return axios
+			.delete(`${baseUrl}/${id}`, { headers: token })
+			.then((response) => {
+				getAllEvents();
+				return new Promise((resolve) => resolve(response.data));
+		});
+	}
 
-    // function to get one event by id:
-    function getEvent(id: string): Promise<any> {
-        return axios.get(`${baseUrl}/${id}`).then((response) => {
-            return new Promise((resolve) => resolve(response.data));
-        });
-    }
+	// function to get one event by id:
+	function getEvent(id: string): Promise<any> {
+		return axios.get(`${baseUrl}/${id}`).then((response) => {
+			return new Promise((resolve) => resolve(response.data));
+		});
+	}
 
-    return (
-        <EventContext.Provider
-            value={{
-                events,
-                getAllEvents,
-                addEvent,
-                editEvent,
-                deleteEvent,
-                getEvent
-            }}
-
-        >
-            {children}
-        </EventContext.Provider>
-    );
+	return (
+		<EventContext.Provider
+			value={{
+				events,
+				getAllEvents,
+				addEvent,
+				editEvent,
+				deleteEvent,
+				getEvent
+			}}>
+			{children}
+		</EventContext.Provider>
+	);
 };
