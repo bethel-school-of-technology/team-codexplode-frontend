@@ -41,7 +41,7 @@ const SignUp: React.FC = () => {
 		addUser(user)
 			.then((userData) => {
 				//localStorage.setItem('token', token);
-				navigation.push('/login', 'forward', 'replace');
+				navigation.push('/', 'forward', 'replace');
 			})
 			.catch((error) => {
 				console.log(error);
@@ -52,7 +52,7 @@ const SignUp: React.FC = () => {
 		<IonPage>
 			<IonContent>
 				<IonToolbar color='light'>
-					<img src='' />
+					<img className='logo2' src='./weliciousicon.png' />
 					<IonTitle className='title'>we_Licious</IonTitle>
 				</IonToolbar>
 				<h1 className='form'>Create your account</h1>

@@ -11,14 +11,20 @@
        font-size: 18px;
    }
    
-   .title {
-       text-align: center;
-       margin-bottom: 20px;
-       font-size: 40px;
-       color: #bb7d3c;
-   }
-
    .form {
     text-align: center;
     margin-top: 30px;
    }
+
+   .button {
+    margin-left: 120px;
+   }
+
+   .logo2 {
+    margin: 25px;
+    margin-bottom: 50px;
+    height: 70px;
+    width: 70px;
+    margin-top: 50px;
+}
+
