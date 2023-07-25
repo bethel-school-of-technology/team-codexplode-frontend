@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
 interface Event {
-    _id?: number;
+    _id?: string;
     title: string;
     description: string;
     location?: string;
@@ -20,8 +20,8 @@ export const EventContext = createContext<EventContextProps>({
     getAllEvents: () => Promise.resolve(),
     addEvent: (event: Event) => Promise.resolve(event),
     editEvent: (event: Event) => Promise.resolve(event),
-    deleteEvent: (id: number) => Promise.resolve({}),
-    getEvent: (id: number) => Promise.resolve(id),
+    deleteEvent: (id: string) => Promise.resolve({}),
+    getEvent: (id: string) => Promise.resolve(id),
 });
 
 export interface EventContextProps {
@@ -29,8 +29,8 @@ export interface EventContextProps {
     getAllEvents: () => Promise<void>;
     addEvent: (event: Event) => Promise<Event>;
     editEvent: (event: Event) => Promise<Event>;
-    deleteEvent: (id: number) => Promise<object>;
-    getEvent: (id: number) => Promise<any>;
+    deleteEvent: (id: string) => Promise<object>;
+    getEvent: (id: string) => Promise<any>;
 }
 
 interface EventProviderProps {
@@ -71,7 +71,7 @@ export const EventProvider = ({ children }: EventProviderProps) => {
         });
     }
 
-    function deleteEvent(id: number): Promise<object> {
+    function deleteEvent(id: string): Promise<object> {
         const token = { Authorization: `Bearer ${localStorage.getItem('token')}` }
 
         return axios.delete(`${baseUrl}/${id}`, { headers: token }).then((response) => {
@@ -81,7 +81,7 @@ export const EventProvider = ({ children }: EventProviderProps) => {
     }
 
     // function to get one event by id:
-    function getEvent(id: number): Promise<any> {
+    function getEvent(id: string): Promise<any> {
         return axios.get(`${baseUrl}/${id}`).then((response) => {
             return new Promise((resolve) => resolve(response.data));
         });
