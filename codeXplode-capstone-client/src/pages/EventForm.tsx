@@ -3,6 +3,7 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
+  IonIcon,
   IonInput,
   IonItem,
   IonLabel,
@@ -12,14 +13,21 @@ import {
   IonText,
   IonTitle,
   IonToolbar,
+  useIonModal,
   useIonRouter,
 } from '@ionic/react';
+import { search } from 'ionicons/icons';
 import { useState, useContext } from 'react';
 import { EventContext } from '../contexts/EventContext';
+import LocationModal from '../components/LocationModal';
+import { OverlayEventDetail } from '@ionic/core';
 
 const EventForm: React.FC = () => {
   let { addEvent } = useContext(EventContext);
   const navigation = useIonRouter();
+  const [present, dismiss] = useIonModal(LocationModal, {
+    onDismiss: (data: string, role: string) => dismiss(data, role),
+  });
 
   const [event, setEvent] = useState({
     host: '',
@@ -33,6 +41,16 @@ const EventForm: React.FC = () => {
   });
 
   let { title, description, cuisine, meal, location, mediaCardUrl, when } = event;
+
+  function openModal() {
+    present({
+      onWillDismiss: (ev: CustomEvent<OverlayEventDetail>) => {
+        if (ev.detail.role === 'confirm') {
+          setEvent({ ...event, location: ev.detail.data });
+        }
+      },
+    });
+  }
 
   const submit = () => {
     console.log(event);
@@ -59,13 +77,14 @@ const EventForm: React.FC = () => {
           <IonTitle className='ion-text-center'>New Event</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen className='ion-padding'>
+      <IonContent fullscreen>
         <IonList>
           <IonItem>
             <IonLabel position='floating'>
               Event Title <IonText color='danger'>*</IonText>
             </IonLabel>
             <IonInput
+              required
               name='title'
               onIonInput={handleChange}
               value={title}
@@ -77,6 +96,7 @@ const EventForm: React.FC = () => {
               Description <IonText color='danger'>*</IonText>
             </IonLabel>
             <IonInput
+              required
               name='description'
               onIonInput={handleChange}
               value={description}
@@ -88,6 +108,7 @@ const EventForm: React.FC = () => {
               Cuisine <IonText color='danger'>*</IonText>
             </IonLabel>
             <IonInput
+              required
               name='cuisine'
               onIonInput={handleChange}
               value={cuisine}
@@ -99,6 +120,7 @@ const EventForm: React.FC = () => {
               Meal <IonText color='danger'>*</IonText>
             </IonLabel>
             <IonInput
+              required
               name='meal'
               onIonInput={handleChange}
               value={meal}
@@ -106,18 +128,23 @@ const EventForm: React.FC = () => {
             />
           </IonItem>
           <IonItem>
-            <IonLabel position='floating'>Location</IonLabel>
             <IonInput
+              label='Location'
+              labelPlacement='floating'
               name='location'
               onIonInput={handleChange}
               value={location}
               placeholder='123 Boardfish Rd, New York, NY'
             />
+
+            <IonButton color='medium' onClick={() => openModal()}>
+              <IonIcon slot='icon-only' icon={search} />
+            </IonButton>
           </IonItem>
           <IonItem>
             <IonLabel position='floating'>Image URL</IonLabel>
             <IonInput
-              type='url'
+              type='search'
               name='mediaCardUrl'
               onIonInput={handleChange}
               value={mediaCardUrl}
@@ -134,11 +161,8 @@ const EventForm: React.FC = () => {
               value={when}
               placeholder='2022-01-01'></IonInput>
           </IonItem>
-          <hr />
-          <IonButton expand='block' onClick={() => submit()}>
-            Submit
-          </IonButton>
         </IonList>
+        <IonButton expand='block' onClick={() => submit()}>Submit</IonButton>
       </IonContent>
     </IonPage>
   );
