@@ -16,9 +16,8 @@ import {
 } from '@ionic/react';
 import './Restaurants.css';
 import { caretBackCircleOutline, logOutOutline } from 'ionicons/icons';
-import YelpApi from '../hooks/YelpAPi';
+import YelpApi, { SearchType } from '../hooks/YelpApi';
 import { useEffect, useState } from 'react';
-import { SearchType } from '../hooks/YelpAPi';
 
 const Restaurants: React.FC = () => {
 	const { searchData } = YelpApi();

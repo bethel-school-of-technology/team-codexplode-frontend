@@ -41,7 +41,8 @@
 		"react-dom": "^18.2.0",
 		"react-router": "^5.3.4",
 		"react-router-dom": "^5.3.4",
-		"reselect": "^4.1.8"
+		"reselect": "^4.1.8",
+		"yelp-fusion": "^3.0.0"
 	},
 	"devDependencies": {
 		"@capacitor/assets": "^2.0.4",
