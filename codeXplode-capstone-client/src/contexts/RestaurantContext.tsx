@@ -71,25 +71,6 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
 		getResults();
 	}, []);
 
-	// fetch(){
-	// 	return axios.get(baseUrl, config).then((response) => setResults(response.data));
-
-	// }
-	// const fetch = require('node-fetch');
-
-	// const url = 'https://api.yelp.com/v3/businesses/search?location=Cleveland%2C%20Ohio&radius=20&categories=&locale=en_US&sort_by=rating&offset=15';
-	// const options = {
-	//   method: 'GET',
-	//   headers: {
-	// 	accept: 'application/json',
-	// 	Authorization: 'Bearer t4t89UCiSnjKrLL_D7-ljoHxfD_iOnmqW3JSYZpsN5lT6Kvuhsys0Vq_7FGQpr-prilXt1VwXI8HN-tBazqFIkkUhvo5u73w3y8YYQWU29oVnt6l_zmUmMK3uZS9ZHYx'
-	//   }
-	// };
-
-	// fetch(url, options)
-	//   .then(res) => res.json()
-	//   .then(json => console.log(json))
-	//   .catch(err => console.error('error:' + err));
 	function getAllResults() {
 		return axios
 			.get(baseUrl, config)
