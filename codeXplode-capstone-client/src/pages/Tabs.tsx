@@ -1,11 +1,4 @@
-import {
-	IonIcon,
-	IonLabel,
-	IonRouterOutlet,
-	IonTabBar,
-	IonTabButton,
-	IonTabs
-} from '@ionic/react';
+import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import './Social.css';
 import {
 	colorFillOutline,
@@ -42,7 +35,7 @@ const Tabs: React.FC = () => {
 				<Route exact path='/app/reviews' component={Reviews} />
 				<Route exact path='/app/about' component={About} />
 				{/* <Route exact path='/app/profile' component={Profile} /> */}
-				{/* <Route exact path='/app/social' component={Social} /> */}
+				<Route exact path='/app/social' component={Social} />
 				<Route exact path='/app/signup' component={SignUp} />
 				<Route exact path='/app'>
 					<Redirect to='/app/events' />

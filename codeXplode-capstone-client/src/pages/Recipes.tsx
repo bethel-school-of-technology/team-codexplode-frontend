@@ -10,7 +10,6 @@ import {
 	IonToolbar
 } from '@ionic/react';
 import BlankPage from '../components/BlankPage';
-import './Recipes.css';
 import { calendarOutline, caretBackCircleOutline } from 'ionicons/icons';
 
 const Recipes: React.FC = () => {

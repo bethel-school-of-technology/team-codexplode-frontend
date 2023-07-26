@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
-export interface Result {
+interface Result {
 	id: string;
 	name: string;
 	image_url: string;
@@ -26,16 +26,6 @@ export interface Result {
 	distance: number;
 }
 
-export enum SearchType {
-	all = '',
-	name = 'name',
-	categories = 'catgeories',
-	rating = 'rating',
-	price = 'price',
-	distance = 'distance'
-	// coordinates = 'latitude', 'longitude'
-}
-
 export const RestaurantContext = createContext<RestaurantContextProps>({
 	results: [],
 	getAllResults: () => Promise.resolve()
@@ -52,27 +42,61 @@ interface RestaurantProviderProps {
 
 export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
 	const [results, setResults] = useState<Result[]>([]);
+	const baseUrl = 'https://api.yelp.com/v3/businesses/search';
+	//const apiKey =
+	// 	'Bearer t4t89UCiSnjKrLL_D7-ljoHxfD_iOnmqW3JSYZpsN5lT6Kvuhsys0Vq_7FGQpr-prilXt1VwXI8HN-tBazqFIkkUhvo5u73w3y8YYQWU29oVnt6l_zmUmMK3uZS9ZHYx';
+	// const lat = 41.477142;
+	// const long = -81.925546; ?location=en_US&latitude=41.477142&longitude=-81.925546'
 
-	const baseUrl =
-		'https://api.yelp.com/v3/businesses/search?location=en_US&latitude=41.477142&longitude=-81.925546';
-	const apiKey =
-		'Bearer t4t89UCiSnjKrLL_D7-ljoHxfD_iOnmqW3JSYZpsN5lT6Kvuhsys0Vq_7FGQpr-prilXt1VwXI8HN-tBazqFIkkUhvo5u73w3y8YYQWU29oVnt6l_zmUmMK3uZS9ZHYx';
-	const lat = 41.477142;
-	const long = -81.925546;
+	const config = {
+		headers: {
+			accept: 'application/json',
+			Authorization:
+				'Bearer t4t89UCiSnjKrLL_D7-ljoHxfD_iOnmqW3JSYZpsN5lT6Kvuhsys0Vq_7FGQpr-prilXt1VwXI8HN-tBazqFIkkUhvo5u73w3y8YYQWU29oVnt6l_zmUmMK3uZS9ZHYx'
+		},
+		params: {
+			term: 'restaurants',
+			locations: '14532 Lake Ave, Lakewood, OH 44107',
+			radius: 1609,
+			sort_by: 'rating',
+			limit: 25
+		}
+	};
 
 	useEffect(() => {
-		console.log('useEffect');
+		console.log(results);
 		async function getResults() {
 			await getAllResults();
 		}
 		getResults();
 	}, []);
 
-	function getAllResults() {
-		return axios.get(baseUrl).then((response) => setResults(response.data));
-	}
-	console.log(setResults);
+	// fetch(){
+	// 	return axios.get(baseUrl, config).then((response) => setResults(response.data));
 
+	// }
+	// const fetch = require('node-fetch');
+
+	// const url = 'https://api.yelp.com/v3/businesses/search?location=Cleveland%2C%20Ohio&radius=20&categories=&locale=en_US&sort_by=rating&offset=15';
+	// const options = {
+	//   method: 'GET',
+	//   headers: {
+	// 	accept: 'application/json',
+	// 	Authorization: 'Bearer t4t89UCiSnjKrLL_D7-ljoHxfD_iOnmqW3JSYZpsN5lT6Kvuhsys0Vq_7FGQpr-prilXt1VwXI8HN-tBazqFIkkUhvo5u73w3y8YYQWU29oVnt6l_zmUmMK3uZS9ZHYx'
+	//   }
+	// };
+
+	// fetch(url, options)
+	//   .then(res) => res.json()
+	//   .then(json => console.log(json))
+	//   .catch(err => console.error('error:' + err));
+	function getAllResults() {
+		return axios
+			.get(baseUrl, config)
+			.then((response) => console.log(response))
+			.catch((err) => console.error(err));
+	}
+	console.log(results);
 	return (
 		<RestaurantContext.Provider
 			value={{

@@ -10,7 +10,6 @@ import {
 } from '@ionic/react';
 import { logOutOutline } from 'ionicons/icons';
 import EventList from '../components/EventList';
-import './Events.css';
 
 const Events: React.FC = () => {
 	return (

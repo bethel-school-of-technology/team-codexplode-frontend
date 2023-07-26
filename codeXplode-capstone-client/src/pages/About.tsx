@@ -11,7 +11,6 @@ import {
 	IonButton,
 	IonIcon
 } from '@ionic/react';
-import './About.css';
 import { caretBackCircleOutline, logOutOutline } from 'ionicons/icons';
 
 const About: React.FC = () => {

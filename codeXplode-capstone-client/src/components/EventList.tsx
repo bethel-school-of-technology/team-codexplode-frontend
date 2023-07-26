@@ -19,7 +19,6 @@ import {
 } from '@ionic/react';
 import { useContext, useEffect, useState } from 'react';
 import { trash } from 'ionicons/icons';
-import './EventList.css';
 import { EventContext } from '../contexts/EventContext';
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
