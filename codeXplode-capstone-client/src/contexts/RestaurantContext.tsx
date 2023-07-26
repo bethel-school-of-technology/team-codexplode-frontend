@@ -74,7 +74,7 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
 	function getAllResults() {
 		return axios
 			.get(baseUrl, config)
-			.then((response) => console.log(response))
+			.then((response) => setResults(response.data))
 			.catch((err) => console.error(err));
 	}
 	console.log(results);

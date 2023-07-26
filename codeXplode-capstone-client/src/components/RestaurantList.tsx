@@ -29,17 +29,15 @@ import { RestaurantContext } from '../contexts/RestaurantContext';
 interface ContainerProps {}
 
 const RestaurantList: React.FC<ContainerProps> = () => {
-	const { results, getAllResults } = useContext(RestaurantContext);
+	const { results } = useContext(RestaurantContext);
 
 	useEffect(() => {
 		console.log(results);
 		async function fetch() {
-			console.log(fetch);
+			console.log(results);
 		}
+		fetch();
 	}, []);
-
-	// const [type, setType] = useState<SearchType>(SearchType.all);
-	// useEffect;
 
 	return (
 		<IonList>
@@ -54,7 +52,7 @@ const RestaurantList: React.FC<ContainerProps> = () => {
 
 						<IonCardContent>
 							<p>{result.review_count}</p>
-							<p>Meal: {result.is_closed}</p>
+							<p>Hours: {result.is_closed}</p>
 							<hr />
 						</IonCardContent>
 					</IonCard>
