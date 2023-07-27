@@ -42,25 +42,28 @@ const RestaurantList: React.FC<ContainerProps> = () => {
 	}, []);
 
 	return (
-		<IonList>
-			{results.map((result: any) => {
-				return (
-					<IonCard key={result.id}>
-						<img src={result.image_url} />
-						<IonCardHeader>
-							<IonCardTitle>{result.name}</IonCardTitle>
-							<IonCardSubtitle>{result.rating}</IonCardSubtitle>
-						</IonCardHeader>
+		<>
+			<IonList>
+				{results.map((result: any) => {
+					return (
+						<IonCard key={result.id}>
+							<img src={result.image_url} />
+							<IonCardHeader>
+								<IonCardTitle>{result.name}</IonCardTitle>
+								<IonCardSubtitle>{result.rating}</IonCardSubtitle>
+							</IonCardHeader>
 
-						<IonCardContent>
-							<p>{result.review_count}</p>
-							<p>Hours: {result.is_closed}</p>
-							<hr />
-						</IonCardContent>
-					</IonCard>
-				);
-			})}
-		</IonList>
+							<IonCardContent>
+								<p>{result.review_count}</p>
+								<p>Hours: {result.is_closed}</p>
+								<hr />
+							</IonCardContent>
+						</IonCard>
+					);
+				})}
+			</IonList>
+			<IonCardSubtitle>This is from the component</IonCardSubtitle>
+		</>
 	);
 };
 

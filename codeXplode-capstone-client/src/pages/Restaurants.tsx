@@ -35,6 +35,7 @@ const Restaurants: React.FC = () => {
 				</IonToolbar>
 			</IonHeader>
 			<IonContent className='ion-padding'>
+				<IonTitle>content comming soon...</IonTitle>
 				<RestaurantList />
 			</IonContent>
 		</IonPage>

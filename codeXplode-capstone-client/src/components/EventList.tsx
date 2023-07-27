@@ -90,7 +90,7 @@ const EventList: React.FC<ContainerProps> = () => {
 					src='https://simply-delicious-food.com/wp-content/uploads/2020/06/Sticky-BBQ-ribs-4.jpg'
 				/>
 				<IonCardHeader>
-					<IonCardTitle>Barbecue Ribs</IonCardTitle>
+					<IonCardTitle>BBQ Ribs</IonCardTitle>
 					<IonCardSubtitle>American Cuisine</IonCardSubtitle>
 				</IonCardHeader>
 				<IonCardContent>
