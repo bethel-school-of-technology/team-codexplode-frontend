@@ -25,6 +25,12 @@ const Reviews: React.FC = () => {
 						</IonButton>
 					</IonButtons>
 					<IonTitle>Reviews</IonTitle>
+					<IonButtons slot='end'>
+						<IonButton routerLink='/' routerDirection='root'>
+							<IonIcon icon={logOutOutline}></IonIcon>
+							Logout
+						</IonButton>
+					</IonButtons>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent className='ion-padding'>

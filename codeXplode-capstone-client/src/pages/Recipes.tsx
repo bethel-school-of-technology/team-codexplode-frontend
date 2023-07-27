@@ -10,7 +10,7 @@ import {
 	IonToolbar
 } from '@ionic/react';
 import BlankPage from '../components/BlankPage';
-import { calendarOutline, caretBackCircleOutline } from 'ionicons/icons';
+import { calendarOutline, caretBackCircleOutline, logOutOutline } from 'ionicons/icons';
 
 const Recipes: React.FC = () => {
 	return (
@@ -24,6 +24,12 @@ const Recipes: React.FC = () => {
 						</IonButton>
 					</IonButtons>
 					<IonTitle>Recipes</IonTitle>
+					<IonButtons slot='end'>
+						<IonButton routerLink='/' routerDirection='root'>
+							<IonIcon icon={logOutOutline}></IonIcon>
+							Logout
+						</IonButton>
+					</IonButtons>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent className='ion-padding'>

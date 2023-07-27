@@ -43,7 +43,7 @@ const RestaurantList: React.FC<ContainerProps> = () => {
 		<IonList>
 			{results.map((result: any) => {
 				return (
-					<IonCard key={result._id}>
+					<IonCard key={result.id}>
 						<img src={result.image_url} />
 						<IonCardHeader>
 							<IonCardTitle>{result.name}</IonCardTitle>
