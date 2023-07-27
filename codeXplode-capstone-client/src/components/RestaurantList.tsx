@@ -29,12 +29,14 @@ import { RestaurantContext } from '../contexts/RestaurantContext';
 interface ContainerProps {}
 
 const RestaurantList: React.FC<ContainerProps> = () => {
-	const { results } = useContext(RestaurantContext);
+	const { results, getAllResults } = useContext(RestaurantContext);
+	const [result, setResults] = useState();
 
 	useEffect(() => {
 		console.log(results);
 		async function fetch() {
 			console.log(results);
+			setResults(result);
 		}
 		fetch();
 	}, []);

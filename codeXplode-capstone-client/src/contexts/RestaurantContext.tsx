@@ -64,14 +64,14 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
 	};
 
 	useEffect(() => {
-		console.log(results);
+		console.log('useEffect');
 		async function getResults() {
 			await getAllResults();
 		}
 		getResults();
 	}, []);
 
-	function getAllResults() {
+	async function getAllResults() {
 		return axios
 			.get(baseUrl, config)
 			.then((response) => setResults(response.data))
@@ -89,7 +89,7 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
 	);
 };
 
-//JavaScript
+//JavaScript call method
 // const options = {
 //     method: 'GET',
 //     headers: {
@@ -103,13 +103,13 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
 //     .then(response => console.log(response))
 //     .catch(err => console.error(err));
 
-//HTTP
+//HTTP call method
 // GET /v3/businesses/search?location=Cleveland%2C%20Ohio&radius=20&categories=&locale=en_US&sort_by=rating&offset=15 HTTP/1.1
 // Accept: application/json
 // Authorization: Bearer t4t89UCiSnjKrLL_D7-ljoHxfD_iOnmqW3JSYZpsN5lT6Kvuhsys0Vq_7FGQpr-prilXt1VwXI8HN-tBazqFIkkUhvo5u73w3y8YYQWU29oVnt6l_zmUmMK3uZS9ZHYx
 // Host: api.yelp.com
 
-//Node
+//Node call mmethod
 // const fetch = require('node-fetch');
 
 // const url = 'https://api.yelp.com/v3/businesses/search?location=Cleveland%2C%20Ohio&radius=20&categories=&locale=en_US&sort_by=rating&offset=15';
