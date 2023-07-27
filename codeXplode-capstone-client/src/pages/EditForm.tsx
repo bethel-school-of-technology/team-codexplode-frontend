@@ -1,4 +1,5 @@
 import {
+  IonBackButton,
   IonButton,
   IonButtons,
   IonContent,
@@ -98,9 +99,9 @@ const EditForm: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot='start'>
-            <IonMenuButton></IonMenuButton>
+            <IonBackButton />
           </IonButtons>
-          <IonTitle className='ion-text-center'>New Event</IonTitle>
+          <IonTitle className='ion-text-center'>Edit Event</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>

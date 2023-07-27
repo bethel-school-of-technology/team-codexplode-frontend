@@ -26,27 +26,31 @@ import Restaurants from './Restaurants';
 import Reviews from './Reviews';
 import Profile from './Profile';
 import Social from './Social';
-import { Redirect, Route } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import SignUp from './SignUp';
 import EditForm from './EditForm';
+import EventForm from './EventForm';
 
 const Tabs: React.FC = () => {
 	return (
 		<IonTabs>
 			<IonRouterOutlet>
-				<Route exact path='/app/events' component={Events} />
-				<Route exact path='/app/events/about' component={About} />
-				<Route exact path='/app/events/:eventId' component={EditForm} />
-				<Route exact path='/app/recipes' component={Recipes} />
-				<Route exact path='/app/restaurants' component={Restaurants} />
-				<Route exact path='/app/reviews' component={Reviews} />
-				<Route exact path='/app/about' component={About} />
-				{/* <Route exact path='/app/profile' component={Profile} /> */}
-				{/* <Route exact path='/app/social' component={Social} /> */}
-				<Route exact path='/app/signup' component={SignUp} />
-				<Route exact path='/app'>
-					<Redirect to='/app/events' />
-				</Route>
+				<Switch>
+					<Route exact path='/app/events' component={Events} />
+					<Route path='/app/events/about' component={About} />
+					<Route path='/app/events/new' component={EventForm} />				
+					<Route path='/app/events/:eventId' component={EditForm} />
+					<Route path='/app/recipes' component={Recipes} />
+					<Route path='/app/restaurants' component={Restaurants} />
+					<Route path='/app/reviews' component={Reviews} />
+					<Route path='/app/about' component={About} />
+					{/* <Route exact path='/app/profile' component={Profile} /> */}
+					{/* <Route exact path='/app/social' component={Social} /> */}
+					<Route path='/app/signup' component={SignUp} />
+					<Route path='/app'>
+						<Redirect to='/app/events' />
+					</Route>
+				</Switch>
 			</IonRouterOutlet>
 
 			<IonTabBar slot='bottom'>
