@@ -48,18 +48,30 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
 	// const lat = 41.477142;
 	// const long = -81.925546; ?location=en_US&latitude=41.477142&longitude=-81.925546'
 
-	const config = {
+	//const config = {
+	// 	headers: {
+	// 		accept: 'application/json',
+	// 		Authorization:
+	// 			'Bearer t4t89UCiSnjKrLL_D7-ljoHxfD_iOnmqW3JSYZpsN5lT6Kvuhsys0Vq_7FGQpr-prilXt1VwXI8HN-tBazqFIkkUhvo5u73w3y8YYQWU29oVnt6l_zmUmMK3uZS9ZHYx'
+	// 	},
+	// 	params: {
+	// 		term: 'restaurants',
+	// 		locations: '14532 Lake Ave, Lakewood, OH 44107',
+	// 		radius: 1609,
+	// 		sort_by: 'rating',
+	// 		limit: 25
+	// 	}
+	// };
+
+	const axios = require('axios');
+
+	const options = {
+		method: 'GET',
+		url: 'https://api.yelp.com/v3/businesses/search?location=en_US&latitude=41.477142&longitude=-81.925546',
 		headers: {
 			accept: 'application/json',
 			Authorization:
 				'Bearer t4t89UCiSnjKrLL_D7-ljoHxfD_iOnmqW3JSYZpsN5lT6Kvuhsys0Vq_7FGQpr-prilXt1VwXI8HN-tBazqFIkkUhvo5u73w3y8YYQWU29oVnt6l_zmUmMK3uZS9ZHYx'
-		},
-		params: {
-			term: 'restaurants',
-			locations: '14532 Lake Ave, Lakewood, OH 44107',
-			radius: 1609,
-			sort_by: 'rating',
-			limit: 25
 		}
 	};
 
@@ -71,13 +83,23 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
 		getResults();
 	}, []);
 
+	axios
+		.request(options)
+		.then(function (response: any) {
+			console.log(response.data);
+		})
+		.catch(function (error: any) {
+			console.error(error);
+		});
+
 	async function getAllResults() {
 		return axios
-			.get(baseUrl, config)
-			.then((response) => setResults(response.data))
-			.catch((err) => console.error(err));
+			.get(baseUrl, options)
+			.then((response: any) => setResults(response.data))
+			.catch((err: any) => console.error(err));
 	}
 	console.log(results);
+
 	return (
 		<RestaurantContext.Provider
 			value={{
