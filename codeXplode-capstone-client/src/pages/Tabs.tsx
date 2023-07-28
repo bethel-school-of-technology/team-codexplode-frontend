@@ -7,18 +7,13 @@ import {
 	informationCircle,
 	informationCircleOutline,
 	logOutOutline,
-	logoWechat,
-	newspaperOutline,
-	peopleCircleOutline,
-	starHalfOutline
+	logoWechat
 } from 'ionicons/icons';
 import About from './About';
 import Events from './Events';
 import Recipes from './Recipes';
 import Restaurants from './Restaurants';
 import Reviews from './Reviews';
-import Profile from './Profile';
-import Social from './Social';
 import { Redirect, Route, Switch } from 'react-router';
 import SignUp from './SignUp';
 import EditForm from './EditForm';

@@ -50,11 +50,12 @@ const SignUp: React.FC = () => {
 
 	return (
 		<IonPage>
-			<IonContent>
-				<IonToolbar color='light'>
-					<img className='logo2' src='./weliciousicon.png' />
-					<IonTitle className='title'>we_Licious</IonTitle>
-				</IonToolbar>
+			<IonContent className='background no-scroll'>
+				<IonHeader>
+					<IonTitle className='title' class='animate__animated animate__bounce'>
+						we_Licious
+					</IonTitle>
+				</IonHeader>
 				<h1 className='form'>Create your account</h1>
 				<div className='signup'>
 					<IonList>
@@ -62,8 +63,7 @@ const SignUp: React.FC = () => {
 							<IonInput
 								labelPlacement='floating'
 								value={firstName}
-								onIonInput={(e) => setFirstName(e.detail.value!)}
-							>
+								onIonInput={(e) => setFirstName(e.detail.value!)}>
 								<div slot='label'>
 									{' '}
 									First Name <IonText color='danger'>(Required)</IonText>{' '}
@@ -74,8 +74,7 @@ const SignUp: React.FC = () => {
 							<IonInput
 								labelPlacement='floating'
 								value={lastName}
-								onIonInput={(e) => setLastName(e.detail.value!)}
-							>
+								onIonInput={(e) => setLastName(e.detail.value!)}>
 								<div slot='label'>
 									{' '}
 									Last Name <IonText color='danger'>(Required)</IonText>{' '}
@@ -86,8 +85,7 @@ const SignUp: React.FC = () => {
 							<IonInput
 								labelPlacement='floating'
 								value={username}
-								onIonInput={(e) => setUsername(e.detail.value!)}
-							>
+								onIonInput={(e) => setUsername(e.detail.value!)}>
 								<div slot='label'>
 									{' '}
 									Username <IonText color='danger'>(Required)</IonText>{' '}
@@ -99,8 +97,7 @@ const SignUp: React.FC = () => {
 								labelPlacement='floating'
 								type='password'
 								value={password}
-								onIonInput={(e) => setPassword(e.detail.value!)}
-							>
+								onIonInput={(e) => setPassword(e.detail.value!)}>
 								<div slot='label'>
 									{' '}
 									Password <IonText color='danger'>(Required)</IonText>{' '}

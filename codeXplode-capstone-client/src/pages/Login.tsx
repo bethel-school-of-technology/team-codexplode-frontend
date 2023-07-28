@@ -13,13 +13,15 @@ import {
 	IonPage,
 	IonNavLink,
 	IonRouterLink,
-	IonImg
+	IonImg,
+	IonHeader
 } from '@ionic/react';
 import 'animate.css';
 import './Login.css';
 import { useContext, useState } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import { Link, NavLink } from 'react-router-dom';
+import { restaurant } from 'ionicons/icons';
 const Login: React.FC = () => {
 	const navigation = useIonRouter();
 	let { loginUser } = useContext(UserContext);
@@ -46,16 +48,13 @@ const Login: React.FC = () => {
 	return (
 		<IonPage>
 			<IonContent className='background no-scroll'>
-				<IonToolbar color='black'>
-					{/* <IonImg
-						className='img'
-						src='../../public/assets/weliciousicon.png'
-						alt='we_Licious logo'></IonImg> */}
-				</IonToolbar>
-				<div className='login'>
+				<IonToolbar color='black'></IonToolbar>
+				<IonHeader>
 					<IonTitle className='title' class='animate__animated animate__bounce'>
 						we_Licious
 					</IonTitle>
+				</IonHeader>
+				<div className='login'>
 					<IonList>
 						<IonItem>
 							<IonInput
@@ -79,10 +78,14 @@ const Login: React.FC = () => {
 							</IonInput>
 						</IonItem>
 					</IonList>
-					<IonButton className='button' onClick={handleLogin}>
+					<IonButton className='button' shape='round' onClick={handleLogin}>
 						Login
+						<IonIcon icon={restaurant}></IonIcon>
 					</IonButton>
 				</div>
+				<IonButton className='ion-text-wrap' style={{ maxWidth: '400px' }} routerLink='/signup'>
+					Don't have an account? Click here to create one!{' '}
+				</IonButton>
 				<Link className='link' to='/signup'>
 					Don't have an account? Click here to create one!
 				</Link>
