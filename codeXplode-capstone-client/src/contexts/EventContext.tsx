@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 
 import axios from 'axios';
 
-interface Event {
+export interface Event {
     _id?: string;
     title: string;
     description: string;
