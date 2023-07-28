@@ -25,7 +25,7 @@ const DeleteButton: React.FC<ButtonProps> = ({ eventId }) => {
   };
 
   return (
-    <IonButton color='danger' expand='block' onClick={handleDelete}>
+    <IonButton expand='full' color='danger' onClick={handleDelete}>
       Delete
     </IonButton>
   );
