@@ -1,4 +1,5 @@
 import {
+  IonBackButton,
   IonButton,
   IonButtons,
   IonContent,
@@ -72,7 +73,7 @@ const EventForm: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot='start'>
-            <IonMenuButton></IonMenuButton>
+            <IonBackButton />
           </IonButtons>
           <IonTitle className='ion-text-center'>New Event</IonTitle>
         </IonToolbar>
