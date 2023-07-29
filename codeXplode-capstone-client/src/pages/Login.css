@@ -1,6 +1,6 @@
 .login {
- text-align: center;
- margin: 50px;
+    text-align: center;
+    margin: 50px;
 }
 
 .button {
@@ -12,7 +12,6 @@
     margin-bottom: 20px;
     font-size: 40px;
     color: #bb7d3c;
-    margin-left: 20px;
 }
 
 .link {
@@ -29,3 +28,14 @@
     width: 70px;
 }
 
+ion-content {
+    --background: #fff url(../../Assets/fork.jpg) no-repeat center/cover cover;
+}
+
+.background {
+    background: url(../../Assets/fork.jpg) 0 0/100% no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    z-index: 2;
+}

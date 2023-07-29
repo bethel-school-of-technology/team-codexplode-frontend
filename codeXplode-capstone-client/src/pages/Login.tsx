@@ -44,12 +44,11 @@ const Login: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent>
-        <IonToolbar color="light">
+      <IonContent className="background no-scroll">
+        <IonToolbar color="black">
           <IonButtons>
             <IonIcon slot="icon-only" />
           </IonButtons>
-          <img className='logo' src="./weliciousicon.png"  />
           <IonTitle className="title">we_Licious</IonTitle>
         </IonToolbar>
         <div className="login">
